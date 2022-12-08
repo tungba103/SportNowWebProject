@@ -1,12 +1,15 @@
-import HeaderAdmin from './Header/HeaderAdmin';
-import { AdminPage } from '../../../pages';
+import Header from './AdminHeader/AdminHeader';
+import AdminSidebar from './AdminSidebar/AdminSidebar';
 
-function AdminLayout() {
+function AdminLayout({ children }) {
   return (
-    <>
-      <HeaderAdmin />
-      <AdminPage />
-    </>
+    <div>
+      <Header />
+      <div className="pt-20 sm:pt-20 flex justify-start">
+        <AdminSidebar />
+        {children}
+      </div>
+    </div>
   );
 }
 

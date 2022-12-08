@@ -1,30 +1,29 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { AdminLayout, ScrollToTop, UserLayout, ViewerLayout } from './components';
-import { UserRoutes } from './routes';
+import { ViewerRoutes } from './routes/index';
 function App() {
-  const [author, setAuthor] = useState('viewer');
   return (
-    <div className="h-screen bg-gray-50">
-      <ScrollToTop />
-      <Routes>
-        {UserRoutes.map((route, i) => {
-          const Layout = route.layout;
-          const Page = route.component;
-          return (
-            <Route
-              key={i}
-              path={route.path}
-              element={
+    <Routes>
+      {ViewerRoutes.map((route, index) => {
+        const Layout = route.Layout;
+        const Page = route.component;
+        return (
+          <Route
+            key={index}
+            path={route.path}
+            element={
+              typeof Layout === 'undefined' ? (
+                <Page />
+              ) : (
                 <Layout>
                   <Page />
                 </Layout>
-              }
-            />
-          );
-        })}
-      </Routes>
-    </div>
+              )
+            }
+          />
+        );
+      })}
+    </Routes>
   );
 }
 

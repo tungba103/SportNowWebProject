@@ -1,6 +1,6 @@
 const db = require('../common/connection');
 
-exports.getAll = (result) => {
+exports.getAllFeedback = (result) => {
   db.query('SELECT * from feedback', (err, feedback) => {
     if (err) {
       console.log('err: ' + err);
@@ -12,7 +12,7 @@ exports.getAll = (result) => {
   });
 };
 
-exports.getByUsername = (username, result) => {
+exports.getFeedbackByUsername = (username, result) => {
   db.query(`SELECT * from feedback where username = '${username}'`, (err, feedback) => {
     if (err) {
       console.log('err: ' + err);
@@ -24,8 +24,8 @@ exports.getByUsername = (username, result) => {
   });
 };
 
-exports.delete = (username, result) => {
-  db.query(`DELETE from feedback where username = '${username}'`, (err, feedback) => {
+exports.deleteFeedbackByUsername = (ac, result) => {
+  db.query(`DELETE from feedback where username = ?`, [ac.username], (err, feedback) => {
     if (err) console.log('err: ' + err);
     else {
       result(feedback);
@@ -34,8 +34,18 @@ exports.delete = (username, result) => {
   });
 };
 
-exports.create = (ac, result) => {
-  db.query(`INSERT INTO feedback (username, content) VALUES ('${ac.username}','${ac.content}')`, (err, feedback) => {
+exports.createFeedback = (ac, result) => {
+  db.query(`INSERT INTO feedback (username, content) VALUES (?,?)`, [ac.username, ac.content], (err, feedback) => {
+    if (err) console.log('err: ' + err);
+    else {
+      result(feedback);
+      return;
+    }
+  });
+};
+
+exports.updateFeedback = (ac, result) => {
+  db.query('UPDATE feedback SET content = ? where idFeedback=?', [ac.content, ac.idFeedback], (err, feedback) => {
     if (err) console.log('err: ' + err);
     else {
       result(feedback);

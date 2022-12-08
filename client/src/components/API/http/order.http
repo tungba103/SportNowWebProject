@@ -1,0 +1,80 @@
+@baseUrl = http://localhost:5000
+# @name getAllOrder
+GET {{baseUrl}}/order 
+###
+# @name getOrderByUsername
+GET {{baseUrl}}/order/tungba1
+###
+# @name deleteOrderByIdOrder
+DELETE {{baseUrl}}/order/delete
+Content-Type: application/json 
+
+{
+    "idOrder":"4"
+}
+###
+# @name createOrderItem
+GET {{baseUrl}}/order/create
+Content-Type: application/json 
+
+{
+    "username":"tungba1",
+    "orderDate":"2022-12-04",
+    "status":"Shipped"
+} 
+###
+# @name updateOrder
+GET {{baseUrl}}/order/update
+Content-Type: application/json 
+
+{
+    "idOrder":"2",
+    "username":"tungba1",
+    "orderDate":"2022-12-04",
+    "status":"Shipped"
+}
+
+###
+# @name getAllOrderItem
+GET {{baseUrl}}/order_item 
+###
+# @name getOrderItemByIdOrder
+GET {{baseUrl}}/order_item/4
+###
+# @name deleteOrderItemByIdOrder
+DELETE {{baseUrl}}/order_item/delete_by_id_order
+Content-Type: application/json
+
+{
+    "idOrder":"2"
+}
+###
+# @name deleteOrderItemByIdOrderAndIdProduct
+DELETE {{baseUrl}}/order_item/delete_by_id_order_and_id_product
+Content-Type: application/json
+
+{
+    "idOrder":"4",
+    "idProduct":"34"
+}
+###
+# @name createOrderItem
+POST {{baseUrl}}/order_item/create 
+Content-Type: application/json
+
+{
+    "idOrder":"2",
+    "idProduct":"20",
+    "quantity": "1"
+}
+###
+# @name updateOrderItemQuantity
+PUT {{baseUrl}}/order_item/update 
+Content-Type: application/json
+
+{
+    "idOrder":"2",
+    "idProduct":"20",
+    "quantity": "100"
+}
+###

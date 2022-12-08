@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:5000
+# @name getAllStorageHistory
+GET {{baseUrl}}/storage_history
+###
+# @name getStorageHistoryByIdProduct
+GET {{baseUrl}}/storage_history/3
+###
+# @name deleteStorageHistoryByIdStorageHistory
+DELETE {{baseUrl}}/storage_history/delete
+Content-Type: application/json
+
+-{
+    "idStorageHistory": "1"
+}
+###
+# @name createStorageHistory
+POST {{baseUrl}}/storage_history/create 
+Content-Type: application/json
+
+{
+    "idProduct": 20,
+    "action": "Add 1000 products",
+    "storage": 1000
+}
+###
+# @name updateStorageHistory
+PUT {{baseUrl}}/storage_history/update 
+Content-Type: application/json
+
+{
+    "idProduct": 20,
+    "action": "Add 1000 products",
+    "storage": 2000
+}
+###

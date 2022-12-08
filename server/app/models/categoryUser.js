@@ -1,6 +1,6 @@
 const db = require('../common/connection');
 
-exports.getAll = (result) => {
+exports.getAllCategoryUser = (result) => {
   db.query('SELECT * from category_user', (err, categoryUser) => {
     if (err) {
       console.log('err: ' + err);
@@ -12,8 +12,8 @@ exports.getAll = (result) => {
   });
 };
 
-exports.getByUsername = (username, result) => {
-  db.query(`SELECT * from category_user where username = '${username}'`, (err, categoryUser) => {
+exports.getCategoryUserByUsername = (username, result) => {
+  db.query(`SELECT * from category_user where username = ?`, [username], (err, categoryUser) => {
     if (err) {
       console.log('err: ' + err);
       result(null);
@@ -24,8 +24,8 @@ exports.getByUsername = (username, result) => {
   });
 };
 
-exports.deleteCategoryUser = (username, result) => {
-  db.query(`DELETE from category_user where username = '${username}'`, (err, categoryUser) => {
+exports.deleteCategoryUserByUsername = (ac, result) => {
+  db.query(`DELETE from category_user where username = ?`, [ac.username], (err, categoryUser) => {
     if (err) console.log('err: ' + err);
     else {
       result(categoryUser);
@@ -33,8 +33,8 @@ exports.deleteCategoryUser = (username, result) => {
     }
   });
 };
-exports.deleteCategoryUserItem = (username, cuName, result) => {
-  db.query(`DELETE from category_user where username = '${username}' AND cuName = '${cuName}'`, (err, categoryUser) => {
+exports.deleteCategoryUserItem = (ac, result) => {
+  db.query(`DELETE from category_user where username = ? AND cuName = ?`, [ac.username, ac.cuName], (err, categoryUser) => {
     if (err) console.log('err: ' + err);
     else {
       result(categoryUser);
@@ -43,8 +43,8 @@ exports.deleteCategoryUserItem = (username, cuName, result) => {
   });
 };
 
-exports.create = (ac, result) => {
-  db.query(`INSERT INTO category_user (username,cuName) VALUES ('${ac.username}','${ac.cuName}')`, (err, categoryUser) => {
+exports.createCategoryUserItem = (ac, result) => {
+  db.query(`INSERT INTO category_user(username,cuName) VALUES (?,?)`, [ac.username, ac.cuName], (err, categoryUser) => {
     if (err) console.log('err: ' + err);
     else {
       result(categoryUser);

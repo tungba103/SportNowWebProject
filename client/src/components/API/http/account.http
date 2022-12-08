@@ -1,0 +1,118 @@
+@baseUrl = http://localhost:5000
+
+#Account
+# @name getAllAccount
+GET {{baseUrl}}/account
+###
+
+# @name getAccountByUsername
+GET {{baseUrl}}/account/tungba
+###
+# @name deleteAccountByUsername
+DELETE {{baseUrl}}/account/delete
+Content-Type: application/json 
+
+{
+    "username": "tungba"
+}
+###
+# @name createAccount
+POST {{baseUrl}}/account/create
+Content-Type: application/json
+
+{
+    "username" : "tungba",
+    "password" : "1"
+}
+###
+# @name updateAccount
+PUT {{baseUrl}}/account/update
+Content-Type: application/json
+
+{
+    "username": "tungba",
+    "password": "123",
+    "name": "TungBo",
+    "image": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    "email": "tungba100302@gmail.com",
+    "phoneNumber": "0965899821",
+    "gender": "Male",
+    "dob": "2022/12/3"
+}
+###
+# @name getAllCategoryUser
+GET {{baseUrl}}/category_user
+###
+# @name getCategoryUserByUsername
+GET {{baseUrl}}/category_user/tungba
+###
+# @name deleteCategoryUserByUsername
+DELETE {{baseUrl}}/category_user/delete_by_username 
+Content-Type: application/json 
+
+{
+    "username" : "tungba"
+}
+###
+# @name deleteCategoryUserItem
+DELETE {{baseUrl}}/category_user/delete_by_username_and_cu_name
+Content-Type: application/json 
+
+{
+    "username" : "tungba",
+    "cuName" : "shirt"
+}
+###
+# @name createCategoryUserItem
+POST {{baseUrl}}/category_user/create 
+Content-Type: application/json
+
+{
+    "username" : "tungba",
+    "cuName" : "ball"
+}
+###
+
+# @name getAllCart
+GET {{baseUrl}}/cart
+###
+# @name getCartByUsername
+{{baseUrl}}/cart/tungba
+###
+# @name deleteCartByUsername
+DELETE {{baseUrl}}/cart/delete_by_username
+Content-Type: application/json 
+
+{
+    "username": "tungba2"
+}
+###
+# @name deleteCartItemByUsernameAndIdProduct
+DELETE {{baseUrl}}/cart/delete_by_username_and_id_product
+Content-Type: application/json
+
+{
+    "username": "tungba2",
+    "idProduct": 10
+}
+###
+# @name createCart
+POST {{baseUrl}}/cart/create
+Content-Type: application/json
+
+{
+    "username": "tungba",
+    "idProduct": 12,
+    "quantity": 2    
+}
+###
+# @name updateQuantity
+PUT {{baseUrl}}/cart/update 
+Content-Type: application/json
+
+{
+    "username": "tungba",
+    "idProduct": 10,
+    "quantity": 4    
+}
+###

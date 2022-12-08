@@ -1,6 +1,6 @@
 const db = require('../common/connection');
 
-exports.getAll = (result) => {
+exports.getAllAccount = (result) => {
   db.query('SELECT * from account', (err, account) => {
     if (err) {
       console.log('err: ' + err);
@@ -12,8 +12,8 @@ exports.getAll = (result) => {
   });
 };
 
-exports.getByUsername = (username, result) => {
-  db.query(`SELECT * from account where username = '${username}'`, (err, account) => {
+exports.getAccountByUsername = (username, result) => {
+  db.query(`SELECT * from account where username = ?`, [username], (err, account) => {
     if (err) {
       console.log('err: ' + err);
       result(null);
@@ -24,8 +24,8 @@ exports.getByUsername = (username, result) => {
   });
 };
 
-exports.delete = (username, result) => {
-  db.query(`DELETE from account where username = '${username}'`, (err, account) => {
+exports.deleteAccountByUsername = (ac, result) => {
+  db.query(`DELETE from account where username = ?`, [ac.username], (err, account) => {
     if (err) console.log('err: ' + err);
     else {
       result(account);
@@ -34,8 +34,8 @@ exports.delete = (username, result) => {
   });
 };
 
-exports.create = (ac, result) => {
-  db.query(`INSERT INTO account (username, password,name) VALUES ('${ac.username}','${ac.password}','${ac.name}')`, (err, account) => {
+exports.createAccount = (ac, result) => {
+  db.query(`INSERT INTO account (username, password) VALUES (?,?)`, [ac.username, ac.password], (err, account) => {
     if (err) console.log('err: ' + err);
     else {
       result(account);
@@ -44,10 +44,10 @@ exports.create = (ac, result) => {
   });
 };
 
-exports.update = (ac, result) => {
+exports.updateAccount = (ac, result) => {
   db.query(
-    'UPDATE account SET password=?, name=?, email=?, phoneNumber=?, gender=?, dob=? where username = ?',
-    [ac.password, ac.name, ac.email, ac.phoneNumber, ac.gender, ac.dob, ac.username],
+    'UPDATE account SET password=?, name=?,image=?, email=?, phoneNumber=?, gender=?, dob=? where username = ?',
+    [ac.password, ac.name, ac.image, ac.email, ac.phoneNumber, ac.gender, ac.dob, ac.username],
     (err, account) => {
       if (err) console.log('err: ' + err);
       else {

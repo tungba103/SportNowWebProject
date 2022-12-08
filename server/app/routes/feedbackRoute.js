@@ -1,8 +1,8 @@
 module.exports = (router) => {
-  var AccountController = require('../controllers/accountController');
-  router.get('/account', AccountController.getAllAccount);
-  router.get('/account/detail/:username', AccountController.getAccountByUsername);
-  router.delete('/account/delete/:username', AccountController.deleteAccount);
-  router.post('/account/create', AccountController.createAccount);
-  router.put('/account/update', AccountController.updateAccount);
+  var FeedbackController = require('../controllers/feedbackController');
+  router.get('/feedback', FeedbackController.getAllFeedback);
+  router.get('/feedback/:username', FeedbackController.getFeedbackByUsername);
+  router.delete('/feedback/delete', FeedbackController.deleteFeedbackByUsername);
+  router.post('/feedback/create', FeedbackController.createFeedback);
+  router.put('/feedback/update', FeedbackController.updateFeedback);
 };

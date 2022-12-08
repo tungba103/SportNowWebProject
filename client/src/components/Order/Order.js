@@ -1,4 +1,4 @@
-import OrderItem from '../OrderItem/OrderItem';
+import OrderItem from './OrderItem';
 
 function Order() {
   return (

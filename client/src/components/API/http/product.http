@@ -1,0 +1,84 @@
+@baseUrl = http://localhost:5000
+
+# @name getAllProduct
+GET {{baseUrl}}/product
+###
+# @name getProductByIdProduct
+GET {{baseUrl}}/product/1
+###
+# @name deleteProductByIdProduct
+DELETE  {{baseUrl}}/product/delete 
+Content-Type: application/json
+
+{
+    "idProduct":"92"
+}
+###
+# @name createProduct
+POST {{baseUrl}}/product/create
+Content-Type: application/json
+
+{
+    "title": "Demo",
+    "price": 10,
+    "image": "NF_ball.jpg",
+    "description": "Nottingham Forest Football Club is an association football club based in West Bridgford, Nottinghamshire, England. The football club was founded in 1865 and have played their home games at the City Ground, on the banks of the River Trent, since 1898. Forest are one of four English clubs to have won the European Cup/UEFA Champions League more than once and are one of two English clubs to have won the competition back-to-back. Forest have two stars above their club crest to commemorate their two European Cup victories. The club competes in the Premier League, the top division of the English football league system.",
+    "storage": 100,
+    "sold": 0  
+}
+###
+# @name updateProductInfo
+PUT {{baseUrl}}/product/update_info
+Content-Type: application/json
+
+{
+    "idProduct":92,
+    "title": "Demo Product",
+    "price": 10,
+    "image": "NF_ball.jpg",
+    "description": "Nottingham Forest Football Club is an association football club based in West Bridgford, Nottinghamshire, England. The football club was founded in 1865 and have played their home games at the City Ground, on the banks of the River Trent, since 1898. Forest are one of four English clubs to have won the European Cup/UEFA Champions League more than once and are one of two English clubs to have won the competition back-to-back. Forest have two stars above their club crest to commemorate their two European Cup victories. The club competes in the Premier League, the top division of the English football league system."
+}
+###
+# @name updateProductStorage
+PUT {{baseUrl}}/product/update_storage
+Content-Type: application/json
+
+{
+    "idProduct":92,
+    "storage": 10,
+    "sold": 90
+}
+###
+
+
+# @name getAllCategoryProduct
+GET {{baseUrl}}/category_product
+###
+# @name getCategoryProductByIdProduct
+GET {{baseUrl}}/category_product/1
+###
+# @name deleteCategoryProductByCName
+DELETE {{baseUrl}}/category_product/delete_by_c_name 
+Content-Type: application/json
+
+{
+    "cName": "astonvilla"
+}
+###
+# @name deleteCategoryProductByIdProduct
+DELETE {{baseUrl}}/category_product/delete_by_id_product 
+Content-Type: application/json
+
+{
+    "idProduct": "1"
+}
+###
+# @name createCategoryProduct
+POST {{baseUrl}}/category_product/create
+Content-Type: application/json
+
+{
+    "idProduct": "1",
+    "cName":"Hello"
+}
+###
