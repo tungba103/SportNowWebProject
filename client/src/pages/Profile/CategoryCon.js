@@ -25,15 +25,15 @@ function CategoryCon() {
   };
   return (
     <div className="flex flex-col bg-white p-2 sm:p-10 sm:border rounded-xl text-sm sm:text-xl">
-      <p className="flex justify-center text-3xl font-bold mb-10">Category tag</p>
-      <div className="flex flex-col sm:flex-row flex-wrap ">
+      <h3 className="px-8 text-xl font-medium text-gray-900 dark:text-white">Category</h3>
+      <div className="flex flex-col sm:flex-row flex-wrap mt-10 px-10">
         {cates.map((cate, i) => {
           return (
-            <div className="flex justify-center sm:border sm:p-1 sm:m-2 rounded-sm">
-              <Badge key={i} size="sm" className="w-28 text-lg ">
+            <div className="flex justify-center items-center px-2 bg-orange-400 rounded-lg sm:p-2 sm:m-2 ">
+              <p key={i} size="sm" className="w-24 text-lg">
                 {cate}
-              </Badge>
-              <Button size="xs" color="failure" className="ml-6" onClick={() => updateCategoryUser(cate)}>
+              </p>
+              <Button size="xs" color="failure" className="" onClick={() => updateCategoryUser(cate)}>
                 Remove
               </Button>
             </div>
@@ -42,7 +42,7 @@ function CategoryCon() {
       </div>
       <div className="flex justify-center mt-4 sm:mt-20">
         <input className="px-2 py-1 border focus:outline-none w-32 mr-10" onChange={(e) => setValue(e.target.value)} />
-        <Button size="xs" onClick={() => updateCategoryUser()}>
+        <Button size="sm" className="px-4" onClick={() => updateCategoryUser()}>
           Add
         </Button>
       </div>

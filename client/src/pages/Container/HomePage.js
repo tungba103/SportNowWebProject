@@ -1,5 +1,6 @@
 import { Item } from '../../components';
 import { Carousel, Card } from 'flowbite-react';
+import { Link } from 'react-router-dom';
 const items = [
   {
     name: 'Arsenal Shirt',
@@ -76,7 +77,9 @@ function HomePage(props) {
         <div id="item-list" className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
           {items.map((item, index) => {
             return (
-              <Item key={index} image={`${item.image}`} name={`${item.name}`} price={`${item.price}`}></Item>
+              <Link to={`/detail/${item.image}`}>
+                <Item key={index} image={`${item.image}`} name={`${item.name}`} price={`${item.price}`} />
+              </Link>
               // <Item addToCartFromPage={() => props.addToCartFromUser(item.name, item.image, item.price, 1)} key={index} image={`${item.image}`} name={`${item.name}`} price={`${item.price}`}></Item>
             );
           })}

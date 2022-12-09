@@ -1,22 +1,28 @@
 import { faClipboard, faPen, faSearch, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
+import { ChangeAvatar } from '../../components';
 import AddressCon from './AddressCon';
 import CategoryCon from './CategoryCon';
 import OrderCon from './OrderCon';
 import PasswordCon from './PasswordCon';
 import ProfileCon from './ProfileCon';
 function ProfilePage() {
+  const [showChangeAvatar, setShowChangeAvatar] = useState(false);
   const [page, setPage] = useState('ProfileCon');
   let PageOption = page;
   return (
-    <div className="bg-gray-50 text-sm sm:text-lg">
+    <div className="bg-gray-50 text-sm sm:text-lg mt-32">
       <div className=" sm:mx-32 grid grid-cols-12 sm:pt-10">
         <div id="nav-left" className="col-span-3 sm:col-span-2  px-4">
           <div className="flex justify-start py-4 flex-col sm:flex-row">
             <img src="https://cf.shopee.vn/file/96114923d9a24822867c0c0fdc5f23bc_tn" className="h-12 w-12 sm:h-14 ml-3 mb-2 sm:mb-0 sm:ml-0 sm:w-14 rounded-full" alt="" />
-            <div className="sm:ml-4 flex items-center">
+            <div className="sm:ml-4 flex-col items-center">
               <p className="font-bold ml-1">tungba103</p>
+              <p className="text-sm ml-1 text-gray-900 cursor-pointer" onClick={() => setShowChangeAvatar(true)}>
+                Change avatar
+              </p>
+              <ChangeAvatar show={showChangeAvatar} onClose={() => setShowChangeAvatar(false)} />
             </div>
           </div>
           <div>

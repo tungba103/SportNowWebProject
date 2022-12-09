@@ -1,19 +1,26 @@
-import { InputText, InputSelect } from '../../components';
+import { Button } from 'flowbite-react';
+import { useState } from 'react';
+import { InputText, InputSelect, AddAddress, EditAddress } from '../../components';
 
 function AddressCon() {
+  const [showAddAddress, setShowAddAddress] = useState(false);
+  const [showEditAddress, setShowEditAddress] = useState(false);
   return (
-    <div className="flex flex-col bg-white p-2 sm:p-10 sm:border rounded-xl text-sm sm:text-xl">
-      <p className="flex justify-center text-3xl font-bold mb-10">Address</p>
-      <div className="sm:grid sm:grid-cols-2">
-        <InputText name="Name" />
-        <InputText name="Phone" />
-        <InputText name="Province/City" />
-        <InputText name="District" />
-        <InputText name="Sub-district" />
-        <InputText name="Detail Address" />
+    <div className="flex flex-col min-h-96 bg-white p-2 sm:p-10 sm:border rounded-xl text-sm sm:text-xl">
+      <h3 className="text-xl px-8 font-medium text-gray-900 dark:text-white">Address</h3>
+      <div className="flex justify-center mb-4 mt-10">
+        <p className="px-4 py-2 bg-orange-400 w-fit rounded-xl">Name - Phone - Province/City - District - Sub-district - Detail Address</p>
+        <Button onClick={() => setShowEditAddress(true)} className="ml-4" size={'sm'}>
+          Edit
+        </Button>
+        <Button className="ml-4" size={'sm'} color="failure">
+          Remove
+        </Button>
       </div>
-      <div className="flex justify-center mt-20">
-        <button className="px-4 py-2 rounded-3xl bg-orange-400 w-32 text-white opacity-90 hover:opacity-100 hover:bg-orange-600">Save</button>
+      <EditAddress show={showEditAddress} onClose={() => setShowEditAddress(false)} />
+      <div className="flex justify-center">
+        <Button onClick={() => setShowAddAddress(true)}>Add address</Button>
+        <AddAddress show={showAddAddress} onClose={() => setShowAddAddress(false)} />
       </div>
     </div>
   );

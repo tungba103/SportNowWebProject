@@ -26,7 +26,7 @@ function ItemDetailPage(props) {
     },
   ];
   return (
-    <div className="bg-orange-50">
+    <div className="bg-orange-50 mt-32">
       <div id="item" className="p-4 sm:p-10">
         <div className="sm:flex sm:justify-center">
           <div id="item-image">

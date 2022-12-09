@@ -45,7 +45,7 @@ const ViewerRoutes = [
   { path: '/shirt', component: ShirtPage, Layout: DefaultLayout },
   { path: '/short', component: ShortPage, Layout: DefaultLayout },
   { path: '/socks', component: SocksPage, Layout: DefaultLayout },
-  { path: '/detail', component: ItemDetailPage, Layout: DefaultLayout },
+  { path: '/detail/:id', component: ItemDetailPage, Layout: DefaultLayout },
   { path: '/contact', component: FeedbackPage, Layout: DefaultLayout },
   { path: '/profile', component: ProfilePage, Layout: DefaultLayout },
   { path: '/checkout', component: CheckoutPage, Layout: DefaultLayout },
