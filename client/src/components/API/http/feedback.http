@@ -8,11 +8,19 @@ GET {{baseUrl}}/feedback
 GET {{baseUrl}}/feedback/tungba
 ###
 # @name deleteFeedbackByUsername
-DELETE {{baseUrl}}/feedback/delete
+DELETE {{baseUrl}}/feedback/delete_by_username
 Content-Type: application/json
 
 {
-    "username":"tungba3"
+    "username":"tungba"
+}
+###
+# @name deleteFeedbackByIdFeedback
+DELETE {{baseUrl}}/feedback/delete_by_id_feedback
+Content-Type: application/json
+
+{
+    "idFeedback":"6"
 }
 ###
 # @name createFeedback
@@ -20,16 +28,16 @@ POST {{baseUrl}}/feedback/create
 Content-Type: application/json
 
 {
-    "username":"tungba",
+    "username":"tungba3",
     "content": "The product is so good"
 }
 ###
-# @name updateFeedback
-PUT {{baseUrl}}/feedback/update
+# @name updateFeedbackByIdFeedback
+PUT {{baseUrl}}/feedback/update_by_id_feedback
 Content-Type: application/json
 
 {
-    "idFeedback":5,
+    "idFeedback":6,
     "content": "Feedback from tungba tungba"
 }
 ###

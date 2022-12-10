@@ -54,7 +54,7 @@ exports.createProductToCart = (ac, result) => {
   });
 };
 
-exports.updateQuantity = (ac, result) => {
+exports.updateQuantityByUsernameAndIdProduct = (ac, result) => {
   db.query('UPDATE cart SET quantity=? where username = ? AND idProduct=?', [ac.quantity, ac.username, ac.idProduct], (err, cart) => {
     if (err) console.log('err: ' + err);
     else {

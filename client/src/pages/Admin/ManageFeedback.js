@@ -1,19 +1,17 @@
 import { Table } from 'flowbite-react';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import { getAllFeedback } from '../../components/API';
 function ManageFeedback() {
   const [feedbacks, setFeedbacks] = useState([
     {
-      idFeedback: 6,
-      username: 'tungba',
-      content: 'Feedback from tungba',
-    },
-    {
-      idFeedback: 7,
-      username: 'tungba',
-      content: 'The product is so good',
+      idFeedback: 0,
+      username: 'username',
+      content: 'content',
     },
   ]);
+  useEffect(() => {
+    getAllFeedback((data) => setFeedbacks(data));
+  }, []);
   return (
     <div className="flex flex-col items-center mt-4">
       <p className="text-2xl font-bold p-1">Manage Feedback</p>

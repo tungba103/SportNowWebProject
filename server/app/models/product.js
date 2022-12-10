@@ -12,6 +12,51 @@ exports.getAllProduct = (result) => {
   });
 };
 
+exports.getAllShirtProduct = (result) => {
+  db.query('SELECT * from product', (err, product) => {
+    if (err) {
+      console.log('err: ' + err);
+      result(null);
+    } else {
+      result(product);
+      return;
+    }
+  });
+};
+exports.getAllShortProduct = (result) => {
+  db.query('SELECT * from product', (err, product) => {
+    if (err) {
+      console.log('err: ' + err);
+      result(null);
+    } else {
+      result(product);
+      return;
+    }
+  });
+};
+exports.getAllSocksProduct = (result) => {
+  db.query('SELECT * from product', (err, product) => {
+    if (err) {
+      console.log('err: ' + err);
+      result(null);
+    } else {
+      result(product);
+      return;
+    }
+  });
+};
+exports.getAllBallProduct = (result) => {
+  db.query('SELECT * from product', (err, product) => {
+    if (err) {
+      console.log('err: ' + err);
+      result(null);
+    } else {
+      result(product);
+      return;
+    }
+  });
+};
+
 exports.getProductByIdProduct = (idProduct, result) => {
   db.query(`SELECT * from product where idProduct = '${idProduct}'`, (err, product) => {
     if (err) {
@@ -44,7 +89,7 @@ exports.createProduct = (ac, result) => {
   });
 };
 
-exports.updateProductInfo = (ac, result) => {
+exports.updateProductInfoByIdProduct = (ac, result) => {
   db.query('UPDATE product SET title=?, price=?,image=?,description=? where idProduct = ?', [ac.title, ac.price, ac.image, ac.description, ac.idProduct], (err, product) => {
     if (err) console.log('err: ' + err);
     else {
@@ -53,7 +98,7 @@ exports.updateProductInfo = (ac, result) => {
     }
   });
 };
-exports.updateProductStorage = (ac, result) => {
+exports.updateProductStorageByIdProduct = (ac, result) => {
   db.query('UPDATE product SET storage=?, sold=? where idProduct = ?', [ac.storage, ac.sold, ac.idProduct], (err, product) => {
     if (err) console.log('err: ' + err);
     else {

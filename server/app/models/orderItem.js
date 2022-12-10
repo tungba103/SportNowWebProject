@@ -53,7 +53,7 @@ exports.createOrderItem = (ac, result) => {
   });
 };
 
-exports.updateOrderItemQuantity = (ac, result) => {
+exports.updateOrderItemQuantityByIdOrderAndIdProduct = (ac, result) => {
   db.query('UPDATE order_item SET quantity=? where idOrder = ? AND idProduct =?', [ac.quantity, ac.idOrder, ac.idProduct], (err, orderItem) => {
     if (err) console.log('err: ' + err);
     else {

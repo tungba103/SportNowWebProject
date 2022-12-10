@@ -53,7 +53,7 @@ exports.createOrder = (ac, result) => {
   });
 };
 
-exports.updateOrder = (ac, result) => {
+exports.updateOrderByUsername = (ac, result) => {
   db.query('UPDATE order SET orderDate=?, status=? where username = ?', [ac.orderDate, ac.status, ac.username], (err, order) => {
     if (err) console.log('err: ' + err);
     else {

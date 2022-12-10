@@ -18,12 +18,12 @@ exports.deleteAccountByUsername = (req, res) => {
   Account.deleteAccountByUsername(ac, (data) => {
     res.send(data);
   });
-  CategoryUser.deleteCategoryUserByUsername(ac, (data) => {
-    res.send(data);
-  });
-  Cart.deleteCartByUsername(req.params.username, (data) => {
-    res.send(data);
-  });
+  // CategoryUser.deleteCategoryUserByUsername(ac, (data) => {
+  //   res.send(data);
+  // });
+  // Cart.deleteCartByUsername(req.params.username, (data) => {
+  //   res.send(data);
+  // });
 };
 exports.createAccount = (req, res) => {
   var ac = req.body;
@@ -31,9 +31,9 @@ exports.createAccount = (req, res) => {
     res.send(data);
   });
 };
-exports.updateAccount = (req, res) => {
+exports.updateAccountByUsername = (req, res) => {
   var ac = req.body;
-  Account.updateAccount(ac, (data) => {
+  Account.updateAccountByUsername(ac, (data) => {
     res.send(data);
   });
 };
@@ -55,9 +55,9 @@ exports.deleteCategoryUserByUsername = (req, res) => {
     res.send(data);
   });
 };
-exports.deleteCategoryUserItem = (req, res) => {
+exports.deleteCategoryUserItemByUsernameAndCuName = (req, res) => {
   var ac = req.body;
-  CategoryUser.deleteCategoryUserItem(ac, (data) => {
+  CategoryUser.deleteCategoryUserItemByUsernameAndCuName(ac, (data) => {
     res.send(data);
   });
 };
@@ -97,9 +97,9 @@ exports.createCart = (req, res) => {
     res.send(data);
   });
 };
-exports.updateQuantity = (req, res) => {
+exports.updateQuantityByUsernameAndIdProduct = (req, res) => {
   var ac = req.body;
-  Cart.updateQuantity(ac, (data) => {
+  Cart.updateQuantityByUsernameAndIdProduct(ac, (data) => {
     res.send(data);
   });
 };

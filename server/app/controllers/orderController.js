@@ -22,9 +22,9 @@ exports.createOrder = (req, res) => {
     res.send(data);
   });
 };
-exports.updateOrder = (req, res) => {
+exports.updateOrderByUsername = (req, res) => {
   var ac = req.body;
-  Order.updateOrder(ac, (data) => {
+  Order.updateOrderByUsername(ac, (data) => {
     res.send(data);
   });
 };
@@ -56,9 +56,9 @@ exports.createOrderItem = (req, res) => {
     res.send(data);
   });
 };
-exports.updateOrderItemQuantity = (req, res) => {
+exports.updateOrderItemQuantityByIdOrderAndIdProduct = (req, res) => {
   var ac = req.body;
-  OrderItem.updateOrderItemQuantity(ac, (data) => {
+  OrderItem.updateOrderItemQuantityByIdOrderAndIdProduct(ac, (data) => {
     res.send(data);
   });
 };

@@ -1,9 +1,14 @@
 import { Button, Table } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { AddProduct, EditProduct } from '../../components';
+
+import { getAllProduct, getProductByIdProduct } from '../../components/API';
 function ManageStorage() {
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [showEditProduct, setShowEditProduct] = useState(false);
+
+  const [products, setProducts] = useState();
+
   const [productInfo, setProductInfo] = useState({
     idProduct: 0,
     title: 'title',
@@ -13,28 +18,15 @@ function ManageStorage() {
     storage: 0,
     sold: 0,
   });
-  const products = [
-    {
-      idProduct: 1,
-      title: 'Chelsea Home Shirt',
-      price: 20,
-      image: 'chelsea_shirt.png',
-      description:
-        "Chelsea Football Club is an English professional football club based in Fulham, West London. Founded in 1905, they play their home games at Stamford Bridge. The club competes in the Premier League, the top division of English football. They won their first major honour, the League championship, in 1955. The club won the FA Cup for the first time in 1970, their first European honour, the Cup Winners' Cup, in 1971, and becoming only the third English club to win the Club World Cup in 2022",
-      storage: 10,
-      sold: 0,
-    },
-    {
-      idProduct: 2,
-      title: 'Chelsea Home Shorts',
-      price: 15,
-      image: 'chelsea_short.png',
-      description:
-        "Chelsea Football Club is an English professional football club based in Fulham, West London. Founded in 1905, they play their home games at Stamford Bridge. The club competes in the Premier League, the top division of English football. They won their first major honour, the League championship, in 1955. The club won the FA Cup for the first time in 1970, their first European honour, the Cup Winners' Cup, in 1971, and becoming only the third English club to win the Club World Cup in 2022",
-      storage: 10,
-      sold: 0,
-    },
-  ];
+
+  const fetchProductInfo = (idProduct) => {
+    getProductByIdProduct((data) => setProductInfo(data));
+  };
+
+  useEffect(() => {
+    getAllProduct((data) => setProducts(data));
+  }, []);
+
   return (
     <div className="flex flex-col items-center mt-4">
       <div className="flex">

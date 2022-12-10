@@ -33,7 +33,7 @@ exports.deleteCategoryUserByUsername = (ac, result) => {
     }
   });
 };
-exports.deleteCategoryUserItem = (ac, result) => {
+exports.deleteCategoryUserItemByUsernameAndCuName = (ac, result) => {
   db.query(`DELETE from category_user where username = ? AND cuName = ?`, [ac.username, ac.cuName], (err, categoryUser) => {
     if (err) console.log('err: ' + err);
     else {

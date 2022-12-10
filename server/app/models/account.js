@@ -44,7 +44,7 @@ exports.createAccount = (ac, result) => {
   });
 };
 
-exports.updateAccount = (ac, result) => {
+exports.updateAccountByUsername = (ac, result) => {
   db.query(
     'UPDATE account SET password=?, name=?,image=?, email=?, phoneNumber=?, gender=?, dob=? where username = ?',
     [ac.password, ac.name, ac.image, ac.email, ac.phoneNumber, ac.gender, ac.dob, ac.username],

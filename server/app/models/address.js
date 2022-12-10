@@ -33,8 +33,8 @@ exports.deleteAddressByUsername = (ac, result) => {
     }
   });
 };
-exports.deleteAddressByUsername = (ac, result) => {
-  db.query(`DELETE from address where username = ?`, [ac.username], (err, address) => {
+exports.deleteAddressByIdAddress = (ac, result) => {
+  db.query(`DELETE from address where idAddress = ?`, [ac.idAddress], (err, address) => {
     if (err) console.log('err: ' + err);
     else {
       result(address);
@@ -44,19 +44,23 @@ exports.deleteAddressByUsername = (ac, result) => {
 };
 
 exports.createAddress = (ac, result) => {
-  db.query(`INSERT INTO address (username, password) VALUES (?,?)`, [ac.username, ac.password], (err, address) => {
-    if (err) console.log('err: ' + err);
-    else {
-      result(address);
-      return;
-    }
-  });
+  db.query(
+    `INSERT INTO address (username, name,phone, province, district, subDistrict, detail) VALUES (?,?,?,?,?,?,?)`,
+    [ac.username, ac.name, ac.phone, ac.province, ac.district, ac.subDistrict, ac.detail],
+    (err, address) => {
+      if (err) console.log('err: ' + err);
+      else {
+        result(address);
+        return;
+      }
+    },
+  );
 };
 
-exports.updateAddress = (ac, result) => {
+exports.updateAddressByIdAddress = (ac, result) => {
   db.query(
-    'UPDATE address SET password=?, name=?,image=?, email=?, phoneNumber=?, gender=?, dob=? where username = ?',
-    [ac.password, ac.name, ac.image, ac.email, ac.phoneNumber, ac.gender, ac.dob, ac.username],
+    'UPDATE address SET username=?, name=?,phone=?, province=?, district=?, subDistrict=?, detail=? where idAddress = ?',
+    [ac.username, ac.name, ac.phone, ac.province, ac.district, ac.subDistrict, ac.detail, ac.idAddress],
     (err, address) => {
       if (err) console.log('err: ' + err);
       else {

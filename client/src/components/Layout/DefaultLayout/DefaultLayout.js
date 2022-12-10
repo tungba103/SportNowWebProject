@@ -3,7 +3,7 @@ import Cart from '../../Cart/Cart';
 import Search from '../../Search/Search';
 import DefaultHeader from './DefaultHeader/DefaultHeader';
 
-function ViewerLayout({ children }) {
+function DefaultLayout({ children }) {
   const [displayCart, setDisplayCart] = useState('hidden');
   const [displaySearch, setDisplaySearch] = useState('hidden');
   return (
@@ -16,4 +16,4 @@ function ViewerLayout({ children }) {
   );
 }
 
-export default ViewerLayout;
+export default DefaultLayout;

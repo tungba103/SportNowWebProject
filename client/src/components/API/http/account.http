@@ -9,7 +9,7 @@ GET {{baseUrl}}/account
 GET {{baseUrl}}/account/tungba
 ###
 # @name deleteAccountByUsername
-DELETE {{baseUrl}}/account/delete
+DELETE {{baseUrl}}/account/delete_by_username
 Content-Type: application/json 
 
 {
@@ -25,19 +25,19 @@ Content-Type: application/json
     "password" : "1"
 }
 ###
-# @name updateAccount
-PUT {{baseUrl}}/account/update
+# @name updateAccountByUsername
+PUT {{baseUrl}}/account/update_by_username
 Content-Type: application/json
 
 {
-    "username": "tungba",
-    "password": "123",
-    "name": "TungBo",
+    "username": "tungba2",
+    "password": "1",
+    "name": "Tung Ba 2",
     "image": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
-    "email": "tungba100302@gmail.com",
+    "email": "tungba2@gmail.com",
     "phoneNumber": "0965899821",
     "gender": "Male",
-    "dob": "2022/12/3"
+    "dob": "2022/10/3"
 }
 ###
 # @name getAllCategoryUser
@@ -54,7 +54,7 @@ Content-Type: application/json
     "username" : "tungba"
 }
 ###
-# @name deleteCategoryUserItem
+# @name deleteCategoryUserItemByUsernameAndCuName
 DELETE {{baseUrl}}/category_user/delete_by_username_and_cu_name
 Content-Type: application/json 
 
@@ -106,8 +106,8 @@ Content-Type: application/json
     "quantity": 2    
 }
 ###
-# @name updateQuantity
-PUT {{baseUrl}}/cart/update 
+# @name updateQuantityByUsernameAndIdProduct
+PUT {{baseUrl}}/cart/update_by_username_and_id_product 
 Content-Type: application/json
 
 {

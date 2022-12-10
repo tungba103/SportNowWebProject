@@ -21,9 +21,9 @@ exports.createStorageHistory = (req, res) => {
     res.send(data);
   });
 };
-exports.updateStorageHistory = (req, res) => {
+exports.updateStorageHistoryByIdProduct = (req, res) => {
   var ac = req.body;
-  StorageHistory.updateStorageHistory(ac, (data) => {
+  StorageHistory.updateStorageHistoryByIdProduct(ac, (data) => {
     res.send(data);
   });
 };

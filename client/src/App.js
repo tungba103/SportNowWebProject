@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { ViewerRoutes } from './routes/index';
+import { WebRoutes } from './routes/index';
 function App() {
   return (
     <Routes>
-      {ViewerRoutes.map((route, index) => {
+      {WebRoutes.map((route, index) => {
         const Layout = route.Layout;
         const Page = route.component;
         return (

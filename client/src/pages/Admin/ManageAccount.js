@@ -1,28 +1,18 @@
 import { Button, Table } from 'flowbite-react';
-
+import { useEffect, useState } from 'react';
+import { getAllAccount, deleteAccountByUsername } from '../../components/API';
 function ManageAccount() {
-  const users = [
-    {
-      username: 'tungba1',
-      password: '123',
-      name: 'TungBo',
-      image: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
-      email: 'tungba100302@gmail.com',
-      phoneNumber: '0965899821',
-      gender: 'Male',
-      dob: '2022-12-02T17:00:00.000Z',
-    },
-    {
-      username: 'tungba2',
-      password: '123',
-      name: 'TungBo',
-      image: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
-      email: 'tungba100302@gmail.com',
-      phoneNumber: '0965899821',
-      gender: 'Male',
-      dob: '2022-12-02T17:00:00.000Z',
-    },
-  ];
+  const [users, setUsers] = useState([{}]);
+  const [onRemove, setOnRemove] = useState('');
+
+  useEffect(() => {
+    getAllAccount((data) => setUsers(data));
+  }, [onRemove]);
+
+  const deleteAccount = (username) => {
+    setOnRemove(username);
+    deleteAccountByUsername(username);
+  };
   return (
     <div className="flex flex-col items-center mt-4 ">
       <p className="text-2xl font-bold p-1">Manage Account</p>
@@ -60,7 +50,7 @@ function ManageAccount() {
                   <Table.Cell>{user.phoneNumber}</Table.Cell>
 
                   <Table.Cell>
-                    <Button size={'xs'} color="failure">
+                    <Button onClick={() => deleteAccount(user.username)} size={'xs'} color="failure">
                       Remove
                     </Button>
                   </Table.Cell>

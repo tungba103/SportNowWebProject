@@ -1,29 +1,14 @@
 import { Item } from '../../components';
 import { Carousel, Card } from 'flowbite-react';
 import { Link } from 'react-router-dom';
-const items = [
-  {
-    name: 'Arsenal Shirt',
-    image: 'arsenal_shirt.png',
-    price: 100,
-  },
-  {
-    name: 'Arsenal Ball',
-    image: 'arsenal_ball.png',
-    price: 200,
-  },
-  {
-    name: 'Arsenal Socks',
-    image: 'arsenal_socks.png',
-    price: 200,
-  },
-  {
-    name: 'Arsenal Short',
-    image: 'arsenal_short.png',
-    price: 200,
-  },
-];
+import { useEffect, useState } from 'react';
+import { getAllProduct } from '../../components/API';
+
 function HomePage(props) {
+  const [products, setProducts] = useState([{}]);
+  useEffect(() => {
+    getAllProduct((data) => setProducts(data));
+  }, []);
   return (
     <div id="container" className=" bg-orange-50 px-4 mt-24 sm:mt-32 sm:px-96 sm:py-10">
       <div id="ct-image" className="">
@@ -75,10 +60,10 @@ function HomePage(props) {
           <span className="mt-1 mb-2 sm:mb-0 ml-2 sm:ml-0 sm:mt-0 ">4 products</span>
         </div>
         <div id="item-list" className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
-          {items.map((item, index) => {
+          {products.map((item, index) => {
             return (
-              <Link to={`/detail/${item.image}`}>
-                <Item key={index} image={`${item.image}`} name={`${item.name}`} price={`${item.price}`} />
+              <Link key={index} to={`/detail/${item.image}`}>
+                <Item image={item.image} name={item.title} price={item.price} />
               </Link>
               // <Item addToCartFromPage={() => props.addToCartFromUser(item.name, item.image, item.price, 1)} key={index} image={`${item.image}`} name={`${item.name}`} price={`${item.price}`}></Item>
             );

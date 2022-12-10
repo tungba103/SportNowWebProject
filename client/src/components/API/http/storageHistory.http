@@ -6,7 +6,7 @@ GET {{baseUrl}}/storage_history
 GET {{baseUrl}}/storage_history/3
 ###
 # @name deleteStorageHistoryByIdStorageHistory
-DELETE {{baseUrl}}/storage_history/delete
+DELETE {{baseUrl}}/storage_history/delete_by_id_storage_history
 Content-Type: application/json
 
 -{
@@ -23,8 +23,8 @@ Content-Type: application/json
     "storage": 1000
 }
 ###
-# @name updateStorageHistory
-PUT {{baseUrl}}/storage_history/update 
+# @name updateStorageHistoryByIdProduct
+PUT {{baseUrl}}/storage_history/update_by_id_product 
 Content-Type: application/json
 
 {

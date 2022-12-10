@@ -1,21 +1,21 @@
 import { Table } from 'flowbite-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getAllOrder } from '../../components/API';
 function ManageRevenue() {
   var cost = 0;
   const [orders, setOrders] = useState([
     {
-      idOrder: 1,
-      username: 'tungba1',
-      orderDate: '2022-11-08T17:00:00.000Z',
-      status: 'Shipped',
-    },
-    {
-      idOrder: 2,
-      username: 'tungba1',
-      orderDate: '2022-11-07T17:00:00.000Z',
-      status: 'Shipping',
+      idOrder: 0,
+      username: 'username',
+      orderDate: 'orderDate',
+      status: 'status',
     },
   ]);
+
+  useEffect(() => {
+    getAllOrder((data) => setOrders(data));
+  }, []);
+
   return (
     <div className="flex flex-col items-center mt-4">
       <p className="text-2xl font-bold p-1">Manage Revenue</p>

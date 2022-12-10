@@ -1,0 +1,54 @@
+@baseUrl = http://localhost:5000
+
+
+# @name getAllAddress
+GET {{baseUrl}}/address
+###
+# @name getAddressByUsername
+GET {{baseUrl}}/address/tungba
+###
+# @name deleteAddressByUsername
+DELETE {{baseUrl}}/address/delete_by_username
+Content-Type: application/json
+
+{
+    "username":"tungbo"
+}
+###
+# @name deleteAddressByIdAddress
+DELETE {{baseUrl}}/address/delete_by_id_address
+Content-Type: application/json
+
+{
+    "idAddress":"5"
+}
+###
+# @name createAddress
+POST {{baseUrl}}/address/create
+Content-Type: application/json
+
+{
+    "username": "tungbx",
+    "name": "Ba Tung",
+    "phone": "0965656565",
+    "province": "Son La",
+    "district": "Son La",
+    "subDistrict": "Chieng Sinh",
+    "detail": "Group 1"
+}
+###
+# @name updateAddressByIdAddress
+PUT {{baseUrl}}/address/update_by_id_address
+Content-Type: application/json
+
+{
+    "idAddress": 6,
+    "username": "tungbx",
+    "name": "Ba Tung",
+    "phone": "0sd656565",
+    "province": "Sd La",
+    "district": "Sdn La",
+    "subDistrict": "Cdeng Sinh",
+    "detail": "Gdoup 1"
+}
+###

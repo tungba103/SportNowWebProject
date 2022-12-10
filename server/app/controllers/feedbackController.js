@@ -16,15 +16,21 @@ exports.deleteFeedbackByUsername = (req, res) => {
     res.send(data);
   });
 };
+exports.deleteFeedbackByIdFeedback = (req, res) => {
+  var ac = req.body;
+  Feedback.deleteFeedbackByIdFeedback(ac, (data) => {
+    res.send(data);
+  });
+};
 exports.createFeedback = (req, res) => {
   var ac = req.body;
   Feedback.createFeedback(ac, (data) => {
     res.send(data);
   });
 };
-exports.updateFeedback = (req, res) => {
+exports.updateFeedbackByIdFeedback = (req, res) => {
   var ac = req.body;
-  Feedback.updateFeedback(ac, (data) => {
+  Feedback.updateFeedbackByIdFeedback(ac, (data) => {
     res.send(data);
   });
 };

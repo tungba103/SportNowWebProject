@@ -23,15 +23,15 @@ exports.createProduct = (req, res) => {
     res.send(data);
   });
 };
-exports.updateProductInfo = (req, res) => {
+exports.updateProductInfoByIdProduct = (req, res) => {
   var ac = req.body;
-  Product.updateProductInfo(ac, (data) => {
+  Product.updateProductInfoByIdProduct(ac, (data) => {
     res.send(data);
   });
 };
-exports.updateProductStorage = (req, res) => {
+exports.updateProductStorageByIdProduct = (req, res) => {
   var ac = req.body;
-  Product.updateProductStorage(ac, (data) => {
+  Product.updateProductStorageByIdProduct(ac, (data) => {
     res.send(data);
   });
 };

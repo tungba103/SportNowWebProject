@@ -44,7 +44,7 @@ exports.createStorageHistory = (ac, result) => {
   });
 };
 
-exports.updateStorageHistory = (ac, result) => {
+exports.updateStorageHistoryByIdProduct = (ac, result) => {
   db.query('UPDATE storage_history SET action=?, storage=? where idProduct = ?', [ac.action, ac.storage, ac.idProduct], (err, storageHistory) => {
     if (err) console.log('err: ' + err);
     else {

@@ -33,6 +33,15 @@ exports.deleteFeedbackByUsername = (ac, result) => {
     }
   });
 };
+exports.deleteFeedbackByIdFeedback = (ac, result) => {
+  db.query(`DELETE from feedback where idFeedback = ?`, [ac.idFeedback], (err, feedback) => {
+    if (err) console.log('err: ' + err);
+    else {
+      result(feedback);
+      return;
+    }
+  });
+};
 
 exports.createFeedback = (ac, result) => {
   db.query(`INSERT INTO feedback (username, content) VALUES (?,?)`, [ac.username, ac.content], (err, feedback) => {
@@ -44,7 +53,7 @@ exports.createFeedback = (ac, result) => {
   });
 };
 
-exports.updateFeedback = (ac, result) => {
+exports.updateFeedbackByIdFeedback = (ac, result) => {
   db.query('UPDATE feedback SET content = ? where idFeedback=?', [ac.content, ac.idFeedback], (err, feedback) => {
     if (err) console.log('err: ' + err);
     else {

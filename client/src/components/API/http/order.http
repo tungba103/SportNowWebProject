@@ -6,14 +6,14 @@ GET {{baseUrl}}/order
 GET {{baseUrl}}/order/tungba1
 ###
 # @name deleteOrderByIdOrder
-DELETE {{baseUrl}}/order/delete
+DELETE {{baseUrl}}/order/delete_by_id_order
 Content-Type: application/json 
 
 {
     "idOrder":"4"
 }
 ###
-# @name createOrderItem
+# @name createOrder
 GET {{baseUrl}}/order/create
 Content-Type: application/json 
 
@@ -23,8 +23,8 @@ Content-Type: application/json
     "status":"Shipped"
 } 
 ###
-# @name updateOrder
-GET {{baseUrl}}/order/update
+# @name updateOrderByUsername
+GET {{baseUrl}}/order/update_by_username
 Content-Type: application/json 
 
 {
@@ -69,7 +69,7 @@ Content-Type: application/json
 }
 ###
 # @name updateOrderItemQuantity
-PUT {{baseUrl}}/order_item/update 
+PUT {{baseUrl}}/order_item/update_by_id_order_and_id_product 
 Content-Type: application/json
 
 {
