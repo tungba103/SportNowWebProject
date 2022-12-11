@@ -3,20 +3,11 @@ import { Navigate } from 'react-router-dom';
 import Cart from '../../Cart/Cart';
 import Search from '../../Search/Search';
 import UserHeader from './UserHeader/UserHeader';
-import ViewerHeader from './ViewerHeader/ViewerHeader';
 
-function DefaultLayout({ children }) {
+function UserLayout({ children }) {
   const [displayCart, setDisplayCart] = useState('hidden');
   const [displaySearch, setDisplaySearch] = useState('hidden');
-  if (sessionStorage.getItem('permission') === 'viewer' || sessionStorage.getItem('permission') === null) {
-    return (
-      <>
-        <ViewerHeader setDisplaySearch={(value) => setDisplaySearch(value)} />
-        <Search visibility={displaySearch} setDisplaySearch={(value) => setDisplaySearch(value)} />
-        {children}
-      </>
-    );
-  } else if (sessionStorage.getItem('permission') === 'user') {
+  if (sessionStorage.getItem('permission') === 'user') {
     return (
       <>
         <UserHeader setDisplaySearch={(value) => setDisplaySearch(value)} setDisplayCart={(value) => setDisplayCart(value)} />
@@ -25,7 +16,7 @@ function DefaultLayout({ children }) {
         {children}
       </>
     );
-  } else return <Navigate to={'/signin'} />;
+  } else return <Navigate to={'/home'} />;
 }
 
-export default DefaultLayout;
+export default UserLayout;

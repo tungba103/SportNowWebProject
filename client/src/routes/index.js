@@ -15,22 +15,12 @@ import {
   ShortPage,
   SocksPage,
 } from '../pages';
-import { AdminLayout, DefaultLayout, ViewerLayout } from '../components';
+import { AdminLayout, DefaultLayout, UserLayout } from '../components';
 import Test from '../pages/Test';
 
 const WebRoutes = [
   { path: '/signin', component: SignIn },
   { path: '/signup', component: SignUp },
-  { path: '/', component: HomePage, Layout: ViewerLayout },
-  { path: '/home', component: HomePage, Layout: ViewerLayout },
-  { path: '/ball', component: BallPage, Layout: ViewerLayout },
-  { path: '/shirt', component: ShirtPage, Layout: ViewerLayout },
-  { path: '/short', component: ShortPage, Layout: ViewerLayout },
-  { path: '/socks', component: SocksPage, Layout: ViewerLayout },
-  { path: '/detail/:id', component: ItemDetailPage, Layout: ViewerLayout },
-  { path: '/contact', component: FeedbackPage, Layout: ViewerLayout },
-  { path: '/test', component: Test, Layout: DefaultLayout },
-
   { path: '/', component: HomePage, Layout: DefaultLayout },
   { path: '/home', component: HomePage, Layout: DefaultLayout },
   { path: '/ball', component: BallPage, Layout: DefaultLayout },
@@ -38,9 +28,11 @@ const WebRoutes = [
   { path: '/short', component: ShortPage, Layout: DefaultLayout },
   { path: '/socks', component: SocksPage, Layout: DefaultLayout },
   { path: '/detail/:id', component: ItemDetailPage, Layout: DefaultLayout },
-  { path: '/contact', component: FeedbackPage, Layout: DefaultLayout },
-  { path: '/profile', component: ProfilePage, Layout: DefaultLayout },
-  { path: '/checkout', component: CheckoutPage, Layout: DefaultLayout },
+  { path: '/test', component: Test, Layout: DefaultLayout },
+
+  { path: '/contact', component: FeedbackPage, Layout: UserLayout },
+  { path: '/profile', component: ProfilePage, Layout: UserLayout },
+  { path: '/checkout', component: CheckoutPage, Layout: UserLayout },
 
   { path: '/admin', component: ManageRevenue, Layout: AdminLayout },
   { path: '/manage_revenue', component: ManageRevenue, Layout: AdminLayout },
@@ -48,9 +40,5 @@ const WebRoutes = [
   { path: '/manage_storage', component: ManageStorage, Layout: AdminLayout },
   { path: '/manage_account', component: ManageAccount, Layout: AdminLayout },
 ];
-
-const DefaultRoutes = [];
-
-const AdminRoutes = [];
 
 export { WebRoutes };

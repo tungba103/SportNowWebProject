@@ -12,11 +12,11 @@ const getFeedbackByUsername = (result, username) => {
       result(data);
     });
 };
-const createFeedback = (username, password) => {
+const createFeedback = (username, content) => {
   fetch('/feedback/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: username, password: password }),
+    body: JSON.stringify({ username: username, content: content }),
   }).then(() => {
     console.log('new Feedback added');
   });

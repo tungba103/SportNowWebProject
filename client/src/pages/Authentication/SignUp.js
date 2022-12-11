@@ -1,24 +1,41 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { createAccount, getAllAccount } from '../../components/API';
 function SignIn() {
   let navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
-
-  const checkSignup = (username, password) => {
-    // for (let account of backendData) {
-    //   if (account.username === username && account.password === password) {
-    //     alert('Sign in successfully!');
-    //     sessionStorage.setItem('username', username);
-    //     navigate(route);
-    //     return;
-    //   }
-    // }
-    alert('Your username or password incorrect');
-    return navigate('/signup');
+  const [accounts, setAccounts] = useState([{}]);
+  useEffect(() => {
+    getAllAccount((data) => setAccounts(data));
+  }, []);
+  const checkSignup = (username, password, retypePassword) => {
+    if (password !== retypePassword) {
+      alert('Your password is incorrect! Please try again');
+      navigate('/signup');
+      return;
+    } else {
+      for (let account of accounts) {
+        if (account.username === username && account.password === password) {
+          alert('This account already existed! Please try again');
+          navigate('/signup');
+          return;
+        }
+      }
+      if (username === 'admin') {
+        alert('This account already existed! Please try again');
+        navigate('/signup');
+        return;
+      }
+      createAccount(username, password);
+      alert('Sign up successfully! Please sign in');
+      navigate('/signin');
+      return;
+    }
   };
   const ContinueAsGuest = () => {
+    sessionStorage.setItem('permission', 'viewer');
     return navigate('/home');
   };
   return (
@@ -86,7 +103,7 @@ function SignIn() {
 
           <div>
             <button
-              onClick={() => checkSignup(username, password)}
+              onClick={() => checkSignup(username, password, retypePassword)}
               type="submit"
               className="group relative flex w-full justify-center rounded-md border border-transparent bg-orange-500 py-2 px-4 text-sm font-medium text-white hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >

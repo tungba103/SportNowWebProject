@@ -23,9 +23,29 @@ exports.getCartByUsername = (username, result) => {
     }
   });
 };
+exports.getCartByIdCart = (IdCart, result) => {
+  db.query(`SELECT * from cart where IdCart = ?`, IdCart, (err, cart) => {
+    if (err) {
+      console.log('err: ' + err);
+      result(null);
+    } else {
+      result(cart);
+      return;
+    }
+  });
+};
 
 exports.deleteCartByUsername = (ac, result) => {
   db.query(`DELETE from cart where username = ?`, [ac.username], (err, cart) => {
+    if (err) console.log('err: ' + err);
+    else {
+      result(cart);
+      return;
+    }
+  });
+};
+exports.deleteCartByIdCart = (ac, result) => {
+  db.query(`DELETE from cart where idCart = ?`, [ac.idCart], (err, cart) => {
     if (err) console.log('err: ' + err);
     else {
       result(cart);

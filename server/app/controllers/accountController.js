@@ -79,9 +79,20 @@ exports.getCartByUsername = (req, res) => {
     res.send(data);
   });
 };
+exports.getCartByIdCart = (req, res) => {
+  Cart.getCartByIdCart(req.params.id_cart, (data) => {
+    res.send(data);
+  });
+};
 exports.deleteCartByUsername = (req, res) => {
   var ac = req.body;
   Cart.deleteCartByUsername(ac, (data) => {
+    res.send(data);
+  });
+};
+exports.deleteCartByIdCart = (req, res) => {
+  var ac = req.body;
+  Cart.deleteCartByIdCart(ac, (data) => {
     res.send(data);
   });
 };

@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown } from 'flowbite-react';
+import { Avatar, Dropdown } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
 function AdminHeader(props) {
@@ -8,12 +8,7 @@ function AdminHeader(props) {
         <Link to={'/admin'}>Sport Now</Link>
       </p>
       <div className="absolute top-4 right-0 flex items-center w-24 sm:w-28 text-2xl">
-        {/* <Button color="gray" pill={true} size="xs">
-            <Link className="text-lg" to="/signin">
-              Sign in
-            </Link>
-          </Button> */}
-        <Dropdown floatingArrow inline label={<Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true} />}>
+        <Dropdown floatingArrow inline label={<Avatar img={require('../../../../assets/web_image/admin.png')} rounded={true} />}>
           <Dropdown.Item>
             <Link to={'/manage_revenue'}>Manage Revenue</Link>
           </Dropdown.Item>
@@ -26,7 +21,14 @@ function AdminHeader(props) {
           <Dropdown.Item>
             <Link to={'/manage_account'}>Manage Account</Link>
           </Dropdown.Item>
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              sessionStorage.removeItem('username');
+              sessionStorage.removeItem('permission');
+            }}
+          >
+            <Link to={'/signin'}>Sign out</Link>
+          </Dropdown.Item>
         </Dropdown>
       </div>
     </div>

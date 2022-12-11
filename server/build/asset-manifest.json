@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.927c3588.css",
-    "main.js": "/static/js/main.02ee8b9a.js",
+    "main.css": "/static/css/main.dcd4a000.css",
+    "main.js": "/static/js/main.98c5b871.js",
     "static/media/bournemouth_shirt.png": "/static/media/bournemouth_shirt.cdb3c86b12afa399ca06.png",
     "static/media/background.jpg": "/static/media/background.f68d6728225eb9d1daba.jpg",
     "static/media/arsenal_ball.png": "/static/media/arsenal_ball.5b07ba398e14e9e348f3.png",
@@ -20,10 +20,10 @@
     "static/media/brighton_shirt.png": "/static/media/brighton_shirt.1a9c70f00b86163bbace.png",
     "static/media/fulham_shirt.png": "/static/media/fulham_shirt.1fcd3e28fb4cb74f77e5.png",
     "static/media/MC_socks.png": "/static/media/MC_socks.8d714b3dd2dce55f4ed2.png",
-    "static/media/liverpool_sock.png": "/static/media/liverpool_sock.1752e5d69a4f7544dfe0.png",
+    "static/media/liverpool_socks.png": "/static/media/liverpool_socks.1752e5d69a4f7544dfe0.png",
     "static/media/MU_socks.png": "/static/media/MU_socks.8248a41e637add00baf8.png",
     "static/media/fulham_socks.png": "/static/media/fulham_socks.6d045fa34cef7f22d09c.png",
-    "static/media/bournemouth_sock.png": "/static/media/bournemouth_sock.94fd22ba62a0dc35cf6d.png",
+    "static/media/bournemouth_socks.png": "/static/media/bournemouth_socks.94fd22ba62a0dc35cf6d.png",
     "static/media/bournemouth_short.png": "/static/media/bournemouth_short.7eaf8c4e21fe5fe2a55f.png",
     "static/media/brighton_socks.png": "/static/media/brighton_socks.4ecb789e2afdcb57ba86.png",
     "static/media/newcastle_shirt.png": "/static/media/newcastle_shirt.7f4df55e8cf838ad8e72.png",
@@ -39,6 +39,7 @@
     "static/media/crystalpalace_shirt.jpg": "/static/media/crystalpalace_shirt.ea9c62ca7c8e8bbb447f.jpg",
     "static/media/chelsea_socks.png": "/static/media/chelsea_socks.4834e75da68ea0217d13.png",
     "static/media/westham_shirt.jpg": "/static/media/westham_shirt.98b82449a840450c2ea1.jpg",
+    "static/media/shirt.png": "/static/media/shirt.57b79daadbf47440aa08.png",
     "static/media/newcastle_socks.png": "/static/media/newcastle_socks.2b339841309db00e33bd.png",
     "static/media/NF_ball.jpg": "/static/media/NF_ball.4642100a93d824e9459f.jpg",
     "static/media/astonvilla_ball.jpg": "/static/media/astonvilla_ball.825abd03476563ddebb5.jpg",
@@ -53,6 +54,7 @@
     "static/media/LC_shirt.jpg": "/static/media/LC_shirt.5e2aa0de296cbdba0659.jpg",
     "static/media/wolves_shirt.jpg": "/static/media/wolves_shirt.d59cef0f2e2562719a81.jpg",
     "static/media/southamton_socks.jpg": "/static/media/southamton_socks.10d820431a922b715a1e.jpg",
+    "static/media/admin.png": "/static/media/admin.2ba97968a5d41f978d36.png",
     "static/media/leeds_ball.jpg": "/static/media/leeds_ball.7d646dbc26920a2e30aa.jpg",
     "static/media/wolves_short.jpg": "/static/media/wolves_short.b6eeef238e1c6be87d26.jpg",
     "static/media/southamton_short.jpg": "/static/media/southamton_short.ce0da2941a75d8d1abc6.jpg",
@@ -62,6 +64,7 @@
     "static/media/NF_shirt.jpg": "/static/media/NF_shirt.b59299892c1cbfd8c8bb.jpg",
     "static/media/everton_shirt.jpg": "/static/media/everton_shirt.f916f2e87a1411e50e50.jpg",
     "static/media/brentford_socks.jpg": "/static/media/brentford_socks.2324da08d6d6dd37aeeb.jpg",
+    "static/media/user.png": "/static/media/user.0d14c6999b4a5c8e86a7.png",
     "static/media/NF_socks.jpg": "/static/media/NF_socks.190fb2d83241050870f2.jpg",
     "static/media/brentford_short.jpg": "/static/media/brentford_short.fba9745916b0dbec462d.jpg",
     "static/media/astonvilla_short.jpg": "/static/media/astonvilla_short.6c7a6f860545443fd946.jpg",
@@ -70,11 +73,11 @@
     "static/media/everton_short.jpg": "/static/media/everton_short.ee5d9447555b363c19ae.jpg",
     "static/media/leeds_short.jpg": "/static/media/leeds_short.8590b2baac8a6c724e51.jpg",
     "index.html": "/index.html",
-    "main.927c3588.css.map": "/static/css/main.927c3588.css.map",
-    "main.02ee8b9a.js.map": "/static/js/main.02ee8b9a.js.map"
+    "main.dcd4a000.css.map": "/static/css/main.dcd4a000.css.map",
+    "main.98c5b871.js.map": "/static/js/main.98c5b871.js.map"
   },
   "entrypoints": [
-    "static/css/main.927c3588.css",
-    "static/js/main.02ee8b9a.js"
+    "static/css/main.dcd4a000.css",
+    "static/js/main.98c5b871.js"
   ]
 }

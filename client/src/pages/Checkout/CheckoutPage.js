@@ -1,19 +1,15 @@
 import { Label, Radio, TextInput } from 'flowbite-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartItem } from '../../components';
+import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, updateQuantityByUsernameAndIdProduct } from '../../components/API';
 
 function CheckoutPage() {
-  const array = [
-    { image: 'arsenal_ball.png', name: 'Arsenal Ball', price: '10', quantity: 2 },
-    { image: 'arsenal_ball.png', name: 'Arsenal Ball', price: '10', quantity: 2 },
-    { image: 'arsenal_ball.png', name: 'Arsenal Ball', price: '10', quantity: 2 },
-    { image: 'arsenal_ball.png', name: 'Arsenal Ball', price: '10', quantity: 2 },
-  ];
-  const [cartItem, setCartItem] = useState(array);
-  // useEffect(() => {
-  //   setCartItem(array);
-  // }, array);
+  const [carts, setCarts] = useState();
+  const [cartHandle, setCartHandle] = useState();
+  useEffect(() => {
+    getCartByUsername((data) => setCarts(data), sessionStorage.getItem('username'));
+  }, [cartHandle]);
   return (
     <div className="pt-24 sm:pt-40 border flex-col justify-center items-center px-4 sm:px-96 bg-gray-50">
       <p className="pb-2 text-xl font-bold">Your address</p>
@@ -48,17 +44,24 @@ function CheckoutPage() {
         <p>PRODUCT</p>
         <p>TOTAL</p>
       </div>
-      {cartItem.length === 0 && (
-        <div className="flex flex-col justify-center items-center mt-60">
-          <p className="text-xl font-bold">Your cart is empty</p>
-          <p className="mt-4 cursor-pointer rounded-3xl bg-orange-600 py-2 px-5 text-white hover:bg-orange-700">
-            <Link to={'/home'}>Continue shopping</Link>
-          </p>
-        </div>
-      )}
-      {cartItem.map((cartItem, index) => {
-        return <CartItem key={index} image={cartItem.image} name={cartItem.name} price={cartItem.price} quantity={cartItem.quantity}></CartItem>;
-      })}
+      {typeof carts !== 'undefined' &&
+        carts.map((cartItem, index) => {
+          return (
+            <CartItem
+              key={index}
+              username={cartItem.username}
+              idProduct={cartItem.idProduct}
+              quantity={cartItem.quantity}
+              deleteCartItem={() => {
+                deleteCartItemByUsernameAndIdProduct(cartItem.username, cartItem.idProduct);
+              }}
+              updateQuantity={(quantity) => {
+                updateQuantityByUsernameAndIdProduct(cartItem.username, cartItem.idProduct, quantity);
+              }}
+              updateCart={(quantity) => setCartHandle(quantity)}
+            ></CartItem>
+          );
+        })}
 
       <p className="pb-2 text-xl font-bold">Your payment</p>
       <p className="text-lg ml-4">Choose your payment method:</p>

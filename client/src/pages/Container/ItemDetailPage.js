@@ -1,8 +1,10 @@
 import { faChevronCircleDown, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Item from '../../components/Item/Item';
+import { createCart, getProductByIdProduct } from '../../components/API';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 function ItemDetailPage(props) {
-  // Get item API
   const items = [
     {
       name: 'Arsenal Shirt',
@@ -25,44 +27,74 @@ function ItemDetailPage(props) {
       price: 200,
     },
   ];
+  const id = useParams();
+  const [products, setProducts] = useState();
+  const [quantity, setQuantity] = useState(1);
+  useEffect(() => {
+    getProductByIdProduct((data) => setProducts(data), id.id);
+  }, []);
   return (
     <div className="bg-orange-50 mt-32">
       <div id="item" className="p-4 sm:p-10">
-        <div className="sm:flex sm:justify-center">
-          <div id="item-image">
-            <img className="rounded-2xl border border-sky-800 sm:w-96" src={require(`../../assets/image/arsenal_ball.png`)} alt="" />
-            <div className="sm:sr-only flex justify-center items-center mt-2 mb-2">
-              <i className="fa-solid fa-chevron-left cursor-pointer"></i>
-              <span className="px-4">1/5</span>
-              <FontAwesomeIcon icon={faChevronRight} className="cursor-pointer" />
+        {typeof products === 'undefined' ? (
+          <div className="sm:flex sm:justify-center">
+            <div id="item-image">
+              <img className="rounded-2xl border border-sky-800 sm:w-96" src={require(`../../assets/web_image/shirt.png`)} alt="" />
+              <div className="sm:sr-only flex justify-center items-center mt-2 mb-2">
+                <i className="fa-solid fa-chevron-left cursor-pointer"></i>
+                <span className="px-4">1/5</span>
+                <FontAwesomeIcon icon={faChevronRight} className="cursor-pointer" />
+              </div>
             </div>
-            <div className="sr-only sm:not-sr-only grid grid-cols-4">
-              <img className="w-20 rounded-xl mt-4 border border-sky-800 cursor-pointer hover:border-2" src={require(`../../assets/image/arsenal_ball.png`)} alt="" />
-              <img className="w-20 rounded-xl mt-4 border border-sky-800 cursor-pointer hover:border-2" src={require(`../../assets/image/arsenal_ball.png`)} alt="" />
-              <img className="w-20 rounded-xl mt-4 border border-sky-800 cursor-pointer hover:border-2" src={require(`../../assets/image/arsenal_ball.png`)} alt="" />
-              <img className="w-20 rounded-xl mt-4 border border-sky-800 cursor-pointer hover:border-2" src={require(`../../assets/image/arsenal_ball.png`)} alt="" />
+            <div id="item-info" className="sm:ml-10">
+              <p className="font-bold text-3xl my-2 sm:my-4 sm:text-4xl">Product</p>
+              <p className="my-2 sm:my-4 sm:text-xl">$0</p>
+              <p className="my-1 sm:my-2 text-sm text-gray-700">Quantity</p>
+              <div className="mr-4 w-fit rounded-3xl border border-sky-800 px-4 py-2 bg-white">
+                <FontAwesomeIcon icon={faMinus} className="cursor-pointer" />
+                <span className="mx-8">0</span>
+                <FontAwesomeIcon icon={faPlus} className="cursor-pointer" />
+              </div>
+              <button className="mt-6 mb-2 w-full sm:w-96 sm:text-lg rounded-3xl border border-sky-800 bg-white py-2">Add to cart</button>
+              <p className="text-sm sm:text-base sm:w-96">Description</p>
             </div>
           </div>
-          <div id="item-info" className="sm:ml-10">
-            <p className="font-bold text-3xl my-2 sm:my-4 sm:text-4xl">Arsenal Ball</p>
-            <p className="my-2 sm:my-4 sm:text-xl">$10</p>
-            <p className="my-1 sm:my-2 text-sm text-gray-700">Quantity</p>
-            <div className="mr-4 w-fit rounded-3xl border border-sky-800 px-4 py-2 bg-white">
-              <FontAwesomeIcon icon={faMinus} className="cursor-pointer" />
-              <span className="mx-8">1</span>
-              <FontAwesomeIcon icon={faPlus} className="cursor-pointer" />
+        ) : (
+          <div className="sm:flex sm:justify-center">
+            <div id="item-image">
+              <img className="rounded-2xl border border-sky-800 sm:w-96" src={require(`../../assets/image/${products[0].image}`)} alt="" />
+              <div className="sm:sr-only flex justify-center items-center mt-2 mb-2">
+                <i className="fa-solid fa-chevron-left cursor-pointer"></i>
+                <span className="px-4">1/5</span>
+                <FontAwesomeIcon icon={faChevronRight} className="cursor-pointer" />
+              </div>
             </div>
-            <button className="mt-6 mb-2 w-full sm:w-96 sm:text-lg rounded-3xl border border-sky-800 bg-white py-2">Add to cart</button>
-            <p className="text-sm sm:text-base sm:w-96">Lightweight conditioner rehydrates as it smoothers frizz, moisturizes dullness and restores shine</p>
+            <div id="item-info" className="sm:ml-10">
+              <p className="font-bold text-3xl my-2 sm:my-4 sm:text-4xl">{products[0].title}</p>
+              <p className="my-2 sm:my-4 sm:text-xl">${products[0].price}</p>
+              <p className="my-1 sm:my-2 text-sm text-gray-700">Quantity</p>
+              <div className="mr-4 w-fit rounded-3xl border border-sky-800 px-4 py-2 bg-white">
+                <FontAwesomeIcon icon={faMinus} className="cursor-pointer" onClick={() => setQuantity(quantity - 1)} />
+                <span className="mx-8">{quantity}</span>
+                <FontAwesomeIcon icon={faPlus} className="cursor-pointer" onClick={() => setQuantity(quantity + 1)} />
+              </div>
+              <button
+                onClick={() => {
+                  createCart(sessionStorage.getItem('username'), id.id, quantity);
+                }}
+                className="mt-6 mb-2 w-full sm:w-96 sm:text-lg rounded-3xl border border-sky-800  px-4  sm:py-3 bg-orange-100 hover:bg-orange-400 py-2"
+              >
+                Add to cart
+              </button>
+              <p className="text-sm sm:text-base sm:w-96">{products[0].description}</p>
+            </div>
           </div>
-        </div>
+        )}
         <div id="item-same" className="mt-10">
           <p className="font-bold text-xl sm:text-3xl py-4">Pairs well with</p>
           <div id="item-list" className="grid grid-cols-2 sm:grid-cols-8 sm:gap-8">
             {items.map((item, index) => {
-              return (
-                <Item addToCartFromHome={() => props.addToCartFromUser(item.name, item.image, item.price, 1)} key={index} image={`${item.image}`} name={`${item.name}`} price={`${item.price}`}></Item>
-              );
+              return <Item key={index} image={`${item.image}`} name={`${item.name}`} price={`${item.price}`}></Item>;
             })}
           </div>
         </div>

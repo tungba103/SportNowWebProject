@@ -1,6 +1,5 @@
 import { Item } from '../../components';
 import { Carousel, Card } from 'flowbite-react';
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getAllProduct } from '../../components/API';
 
@@ -61,12 +60,7 @@ function HomePage(props) {
         </div>
         <div id="item-list" className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
           {products.map((item, index) => {
-            return (
-              <Link key={index} to={`/detail/${item.image}`}>
-                <Item image={item.image} name={item.title} price={item.price} />
-              </Link>
-              // <Item addToCartFromPage={() => props.addToCartFromUser(item.name, item.image, item.price, 1)} key={index} image={`${item.image}`} name={`${item.name}`} price={`${item.price}`}></Item>
-            );
+            return <Item key={index} idProduct={item.idProduct} image={item.image} title={item.title} price={item.price} />;
           })}
         </div>
       </div>

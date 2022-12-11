@@ -14,7 +14,9 @@ module.exports = (router) => {
 
   router.get('/cart', AccountController.getAllCart);
   router.get('/cart/:username', AccountController.getCartByUsername);
+  router.get('/cart/:id_cart', AccountController.getCartByIdCart);
   router.delete('/cart/delete_by_username', AccountController.deleteCartByUsername);
+  router.delete('/cart/delete_by_id_cart', AccountController.deleteCartByIdCart);
   router.delete('/cart/delete_by_username_and_id_product', AccountController.deleteCartItemByUsernameAndIdProduct);
   router.post('/cart/create', AccountController.createCart);
   router.put('/cart/update_by_username_and_id_product', AccountController.updateQuantityByUsernameAndIdProduct);

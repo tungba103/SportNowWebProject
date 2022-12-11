@@ -1,27 +1,31 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-function CartItem(props) {
-  const [quantity, setQuantity] = useState(props.quantity);
-  const updateQuantity = (value) => {
-    setQuantity(quantity + value);
-  };
+import { getProductByIdProduct } from '../../components/API';
+function CartItem({ username, idProduct, quantity, deleteCartItem, updateQuantity, updateCart }) {
+  const [products, setProducts] = useState();
+  useEffect(() => {
+    getProductByIdProduct((data) => setProducts(data), idProduct);
+  }, []);
   return (
     <div className="pt-6">
-      <div className="flex justify-between">
-        <img width="60px" height="60px" src={require(`../../assets/image/${props.image}`)} alt="" />
-        <div className="mx-4">
-          <p className="w-24 text-sm font-bold">{props.name}</p>
-          <p className="text-sm text-gray-500">${props.price}</p>
+      {typeof products !== 'undefined' && (
+        <div className="flex justify-between">
+          <img width="60px" height="60px" src={require(`../../assets/image/${products[0].image}`)} alt="" />
+          <div className="mx-4">
+            <p className="w-24 text-sm font-bold">{products[0].title}</p>
+            <p className="text-sm text-gray-500">${products[0].price}</p>
+          </div>
+          <p>${products[0].price * quantity}</p>
         </div>
-        <p>${props.price}</p>
-      </div>
+      )}
       <div className="mt-2 flex items-center justify-center">
         <div className="mr-4 flex items-center rounded-3xl border border-gray-800 px-4 py-2">
           <FontAwesomeIcon
             icon={faMinus}
             onClick={() => {
-              updateQuantity(-1);
+              updateQuantity(quantity - 1);
+              updateCart(quantity - 1);
             }}
             className="cursor-pointer"
           ></FontAwesomeIcon>
@@ -29,13 +33,21 @@ function CartItem(props) {
           <FontAwesomeIcon
             icon={faPlus}
             onClick={() => {
-              updateQuantity(1);
+              updateQuantity(quantity + 1);
+              updateCart(quantity + 1);
             }}
             className="cursor-pointer"
           ></FontAwesomeIcon>
         </div>
         <div>
-          <FontAwesomeIcon onClick={() => props.onDelete(props.name)} icon={faTrash} className="cursor-pointer"></FontAwesomeIcon>
+          <FontAwesomeIcon
+            onClick={() => {
+              deleteCartItem();
+              updateCart('cart');
+            }}
+            icon={faTrash}
+            className="cursor-pointer"
+          ></FontAwesomeIcon>
         </div>
       </div>
     </div>

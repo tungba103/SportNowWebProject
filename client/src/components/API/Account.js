@@ -99,11 +99,11 @@ const getCartByUsername = (result, username) => {
       result(data);
     });
 };
-const createCart = (username, password) => {
+const createCart = (username, idProduct, quantity) => {
   fetch('/cart/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: username, password: password }),
+    body: JSON.stringify({ username: username, idProduct: idProduct, quantity: quantity }),
   }).then(() => {
     console.log('new Cart added');
   });

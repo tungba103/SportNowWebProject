@@ -79,6 +79,9 @@ GET {{baseUrl}}/cart
 # @name getCartByUsername
 {{baseUrl}}/cart/tungba
 ###
+# @name getCartByIdCart
+{{baseUrl}}/cart/1
+###
 # @name deleteCartByUsername
 DELETE {{baseUrl}}/cart/delete_by_username
 Content-Type: application/json 
@@ -101,7 +104,7 @@ POST {{baseUrl}}/cart/create
 Content-Type: application/json
 
 {
-    "username": "tungba",
+    "username": "tungba1",
     "idProduct": 12,
     "quantity": 2    
 }

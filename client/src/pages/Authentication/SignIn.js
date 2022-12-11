@@ -1,23 +1,37 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getAllAccount } from '../../components/API';
 function SignIn() {
   let navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const [accounts, setAccounts] = useState([{}]);
+  useEffect(() => {
+    getAllAccount((data) => setAccounts(data));
+  }, []);
   const checkSignin = (username, password) => {
-    // for (let account of backendData) {
-    //   if (account.username === username && account.password === password) {
-    //     alert('Sign in successfully!');
-    //     sessionStorage.setItem('username', username);
-    //     navigate(route);
-    //     return;
-    //   }
-    // }
+    if (username === 'admin' && password === 'admin') {
+      alert('You sign in with Admin role!');
+      sessionStorage.setItem('username', 'admin');
+      sessionStorage.setItem('permission', 'admin');
+      navigate('/admin');
+      return;
+    } else {
+      for (let account of accounts) {
+        if (account.username === username && account.password === password) {
+          alert('Sign in with User role successfully!');
+          sessionStorage.setItem('username', username);
+          sessionStorage.setItem('permission', 'user');
+          navigate('/home');
+          return;
+        }
+      }
+    }
     alert('Your username or password incorrect');
     return navigate('/signin');
   };
   const ContinueAsGuest = () => {
+    sessionStorage.setItem('permission', 'viewer');
     return navigate('/home');
   };
   return (
