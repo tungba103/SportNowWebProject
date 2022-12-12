@@ -1,19 +1,26 @@
 const getAllOrder = (result) => {
-  fetch('/order')
+  fetch('/api/order')
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getOrderByUsername = (result, username) => {
-  fetch(`/order/${username}`)
+  fetch(`/api/order/username/${username}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+const getOrderByStatus = (result, status) => {
+  fetch(`/api/order/status/${status}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const createOrder = (username, orderDate, status) => {
-  fetch('/order/create', {
+  fetch('/api/order/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, orderDate: orderDate, status: status }),
@@ -22,7 +29,7 @@ const createOrder = (username, orderDate, status) => {
   });
 };
 const updateOrderByUsername = (idOrder, username, orderDate, status) => {
-  fetch('/order/update_by_username', {
+  fetch('/api/order/update_by_username', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, idOrder: idOrder, orderDate: orderDate, status: status }),
@@ -31,7 +38,7 @@ const updateOrderByUsername = (idOrder, username, orderDate, status) => {
   });
 };
 const deleteOrderByIdOrder = (idOrder) => {
-  fetch('/order/delete_by_id_order', {
+  fetch('/api/order/delete_by_id_order', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ idOrder: idOrder }),
@@ -42,21 +49,21 @@ const deleteOrderByIdOrder = (idOrder) => {
 
 // Order Item
 const getAllOrderItem = (result) => {
-  fetch('/order_item')
+  fetch('/api/order_item')
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getOrderItemByIdOrder = (result, idOrder) => {
-  fetch(`/order_item/${idOrder}`)
+  fetch(`/api/order_item/${idOrder}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const createOrderItem = (idOrder, idProduct, quantity) => {
-  fetch('/order_item/create', {
+  fetch('/api/order_item/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ idOrder: idOrder, idProduct: idProduct, quantity: quantity }),
@@ -65,7 +72,7 @@ const createOrderItem = (idOrder, idProduct, quantity) => {
   });
 };
 const updateOrderItemQuantityByIdOrderAndIdProduct = (idOrder, idProduct, quantity) => {
-  fetch('/order_item/update_by_id_order_and_id_product', {
+  fetch('/api/order_item/update_by_id_order_and_id_product', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ idOrder: idOrder, idProduct: idProduct, quantity: quantity }),
@@ -74,7 +81,7 @@ const updateOrderItemQuantityByIdOrderAndIdProduct = (idOrder, idProduct, quanti
   });
 };
 const deleteOrderItemByIdOrderAndIdProduct = (idOrder, idProduct) => {
-  fetch('/order_item/delete_by_id_order_and_id_product', {
+  fetch('/api/order_item/delete_by_id_order_and_id_product', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ idOrder: idOrder, idProduct: idProduct }),
@@ -83,5 +90,5 @@ const deleteOrderItemByIdOrderAndIdProduct = (idOrder, idProduct) => {
   });
 };
 
-export { getAllOrder, getOrderByUsername, createOrder, updateOrderByUsername, deleteOrderByIdOrder };
+export { getAllOrder, getOrderByUsername, getOrderByStatus, createOrder, updateOrderByUsername, deleteOrderByIdOrder };
 export { getAllOrderItem, getOrderItemByIdOrder, createOrderItem, updateOrderItemQuantityByIdOrderAndIdProduct, deleteOrderItemByIdOrderAndIdProduct };

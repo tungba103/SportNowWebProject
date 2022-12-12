@@ -1,19 +1,19 @@
 const getAllAccount = (result) => {
-  fetch('/account')
+  fetch('/api/account')
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getAccountByUsername = (result, username) => {
-  fetch(`/account/${username}`)
+  fetch(`/api/account/${username}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const createAccount = (username, password) => {
-  fetch('/account/create', {
+  fetch('/api/account/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, password: password }),
@@ -22,7 +22,7 @@ const createAccount = (username, password) => {
   });
 };
 const updateAccountByUsername = (username, password, name, image, email, phoneNumber, gender, dob) => {
-  fetch('/account/update_by_username', {
+  fetch('/api/account/update_by_username', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, password: password, name: name, image: image, email: email, phoneNumber: phoneNumber, gender: gender, dob: dob }),
@@ -31,7 +31,7 @@ const updateAccountByUsername = (username, password, name, image, email, phoneNu
   });
 };
 const deleteAccountByUsername = (username) => {
-  fetch('/account/delete_by_username', {
+  fetch('/api/account/delete_by_username', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username }),
@@ -42,21 +42,21 @@ const deleteAccountByUsername = (username) => {
 
 // Category User
 const getAllCategoryUser = (result) => {
-  fetch('/category_user')
+  fetch('/api/category_user')
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getCategoryUserByUsername = (result, username) => {
-  fetch(`/category_user/${username}`)
+  fetch(`/api/category_user/${username}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const createCategoryUserItem = (username, cuName) => {
-  fetch('/category_user/create', {
+  fetch('/api/category_user/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, cuName: cuName }),
@@ -66,7 +66,7 @@ const createCategoryUserItem = (username, cuName) => {
 };
 
 const deleteCategoryUserByUsername = (username) => {
-  fetch('/category_user/delete_by_username', {
+  fetch('/api/category_user/delete_by_username', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username }),
@@ -75,7 +75,7 @@ const deleteCategoryUserByUsername = (username) => {
   });
 };
 const deleteCategoryUserItemByUsernameAndCuName = (username, cuName) => {
-  fetch('/category_user/delete_by_username_and_cu_name', {
+  fetch('/api/category_user/delete_by_username_and_cu_name', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, cuName: cuName }),
@@ -86,21 +86,21 @@ const deleteCategoryUserItemByUsernameAndCuName = (username, cuName) => {
 
 // Cart
 const getAllCart = (result) => {
-  fetch('/cart')
+  fetch('/api/cart')
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getCartByUsername = (result, username) => {
-  fetch(`/cart/${username}`)
+  fetch(`/api/cart/${username}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const createCart = (username, idProduct, quantity) => {
-  fetch('/cart/create', {
+  fetch('/api/cart/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, idProduct: idProduct, quantity: quantity }),
@@ -109,7 +109,7 @@ const createCart = (username, idProduct, quantity) => {
   });
 };
 const updateQuantityByUsernameAndIdProduct = (username, idProduct, quantity) => {
-  fetch('/cart/update_by_username_and_id_product', {
+  fetch('/api/cart/update_by_username_and_id_product', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, idProduct: idProduct, quantity: quantity }),
@@ -118,7 +118,7 @@ const updateQuantityByUsernameAndIdProduct = (username, idProduct, quantity) => 
   });
 };
 const deleteCartByUsername = (username) => {
-  fetch('/cart/delete_by_username', {
+  fetch('/api/cart/delete_by_username', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username }),
@@ -127,7 +127,7 @@ const deleteCartByUsername = (username) => {
   });
 };
 const deleteCartItemByUsernameAndIdProduct = (username, idProduct) => {
-  fetch('/cart/delete_by_username_and_id_product', {
+  fetch('/api/cart/delete_by_username_and_id_product', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, idProduct: idProduct }),

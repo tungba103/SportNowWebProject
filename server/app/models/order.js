@@ -11,6 +11,17 @@ exports.getAllOrder = (result) => {
     }
   });
 };
+exports.getOrderByStatus = (status, result) => {
+  db.query(`SELECT * from orderr  where status='${status}'`, (err, order) => {
+    if (err) {
+      console.log('err: ' + err);
+      result(null);
+    } else {
+      result(order);
+      return;
+    }
+  });
+};
 
 exports.getOrderByUsername = (username, result) => {
   db.query(`SELECT * from orderr where username = ?`, [username], (err, order) => {

@@ -16,6 +16,10 @@ export { default as ShortPage } from './Container/ShortPage';
 export { default as SocksPage } from './Container/SocksPage';
 
 export { default as FeedbackPage } from './Feedback/FeedbackPage';
-export { default as ProfilePage } from './Profile/ProfilePage';
+export { default as AddressCon } from './Profile/AddressCon';
+export { default as CategoryCon } from './Profile/CategoryCon';
+export { default as OrderCon } from './Profile/OrderCon';
+export { default as PasswordCon } from './Profile/PasswordCon';
+export { default as ProfileCon } from './Profile/ProfileCon';
 
 export { default as Test } from './Test';

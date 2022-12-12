@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import { getProductByIdProduct } from '../../components/API';
+import { getProductByIdProduct } from '../../components/API/Product';
 function CartItem({ username, idProduct, quantity, deleteCartItem, updateQuantity, updateCart }) {
   const [products, setProducts] = useState();
   useEffect(() => {

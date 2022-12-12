@@ -1,9 +1,12 @@
-@baseUrl = http://localhost:5000
+@baseUrl = http://localhost:5000/api
 # @name getAllOrder
 GET {{baseUrl}}/order 
 ###
 # @name getOrderByUsername
-GET {{baseUrl}}/order/tungba1
+GET {{baseUrl}}/order/username/tungba1
+###
+# @name getOrderByStatus
+GET {{baseUrl}}/order/status/Shipped
 ###
 # @name deleteOrderByIdOrder
 DELETE {{baseUrl}}/order/delete_by_id_order

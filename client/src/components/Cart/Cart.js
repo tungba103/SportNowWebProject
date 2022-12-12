@@ -3,7 +3,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import CartItem from './CartItem';
 import { Link } from 'react-router-dom';
-import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, updateQuantityByUsernameAndIdProduct } from '../API';
+import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, updateQuantityByUsernameAndIdProduct } from '../API/Account';
 function Cart(props) {
   const username = sessionStorage.getItem('username');
   const [carts, setCarts] = useState();

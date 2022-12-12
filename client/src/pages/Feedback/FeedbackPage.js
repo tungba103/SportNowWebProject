@@ -1,6 +1,6 @@
 import { Button, Textarea } from 'flowbite-react';
 import { useState } from 'react';
-import { createFeedback } from '../../components/API';
+import { createFeedback } from '../../components/API/Feedback';
 function FeedbackPage() {
   const [content, setContent] = useState('');
   return (

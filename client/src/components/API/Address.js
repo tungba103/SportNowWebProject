@@ -1,19 +1,19 @@
 const getAllAddress = (result) => {
-  fetch('/address')
+  fetch('/api/address')
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getAddressByUsername = (result, username) => {
-  fetch(`/address/${username}`)
+  fetch(`/api/address/${username}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const createAddress = (username, name, phone, province, district, subDistrict, detail) => {
-  fetch('/address/create', {
+  fetch('/api/address/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, name: name, phone: phone, province: province, district: district, subDistrict: subDistrict, detail: detail }),
@@ -23,7 +23,7 @@ const createAddress = (username, name, phone, province, district, subDistrict, d
 };
 
 const updateAddressByIdAddress = (idAddress, username, name, phone, province, district, subDistrict, detail) => {
-  fetch('/address/update_by_id_address', {
+  fetch('/api/address/update_by_id_address', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ idAddress: idAddress, username: username, name: name, phone: phone, province: province, district: district, subDistrict: subDistrict, detail: detail }),
@@ -32,7 +32,7 @@ const updateAddressByIdAddress = (idAddress, username, name, phone, province, di
   });
 };
 const deleteAddressByIdAddress = (idAddress) => {
-  fetch('/address/delete_by_id_address', {
+  fetch('/api/address/delete_by_id_address', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ idAddress: idAddress }),

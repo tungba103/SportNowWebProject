@@ -1,6 +1,6 @@
 import { Button, Table } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-import { getAllAccount, deleteAccountByUsername } from '../../components/API';
+import { getAllAccount, deleteAccountByUsername } from '../../components/API/Account';
 function ManageAccount() {
   const [users, setUsers] = useState([{}]);
   const [onRemove, setOnRemove] = useState('');

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { createAccount, updateAccountByUsername, deleteAccountByUsername, getAllAccount, getProductByIdProduct } from '../components/API';
+import { createAccount, deleteAccountByUsername, getAllAccount, updateAccountByUsername } from '../components/API/Account';
+import { getProductByIdProduct } from '../components/API/Product';
 function Test() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();

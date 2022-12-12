@@ -1,19 +1,19 @@
 const getAllFeedback = (result) => {
-  fetch('/feedback')
+  fetch('/api/feedback')
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getFeedbackByUsername = (result, username) => {
-  fetch(`/feedback/${username}`)
+  fetch(`/api/feedback/${username}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const createFeedback = (username, content) => {
-  fetch('/feedback/create', {
+  fetch('/api/feedback/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username, content: content }),
@@ -22,7 +22,7 @@ const createFeedback = (username, content) => {
   });
 };
 const updateFeedbackByIdFeedback = (idFeedback, content) => {
-  fetch('/feedback/update_by_id_feedback', {
+  fetch('/api/feedback/update_by_id_feedback', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ idFeedback: idFeedback, content: content }),
@@ -31,7 +31,7 @@ const updateFeedbackByIdFeedback = (idFeedback, content) => {
   });
 };
 const deleteFeedbackByUsername = (username) => {
-  fetch('/feedback/delete_by_username', {
+  fetch('/api/feedback/delete_by_username', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: username }),
@@ -40,7 +40,7 @@ const deleteFeedbackByUsername = (username) => {
   });
 };
 const deleteFeedbackByIdFeedback = (idFeedback) => {
-  fetch('/feedback/delete_by_id_feedback', {
+  fetch('/api/feedback/delete_by_id_feedback', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ idFeedback: idFeedback }),

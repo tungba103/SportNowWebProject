@@ -1,15 +1,27 @@
 module.exports = (router) => {
   var ProductController = require('../controllers/productController');
-  router.get('/product', ProductController.getAllProduct);
-  router.get('/product/:id_product', ProductController.getProductByIdProduct);
-  router.delete('/product/delete_by_id_product', ProductController.deleteProductByIdProduct);
-  router.post('/product/create', ProductController.createProduct);
-  router.put('/product/update_info_by_id_product', ProductController.updateProductInfoByIdProduct);
-  router.put('/product/update_storage_by_id_product', ProductController.updateProductStorageByIdProduct);
+  router.get('/api/product', ProductController.getAllProduct);
 
-  router.get('/category_product', ProductController.getAllCategoryProduct);
-  router.get('/category_product/:id_product', ProductController.getCategoryProductByIdProduct);
-  router.delete('/category_product/delete_by_c_name', ProductController.deleteCategoryProductByCName);
-  router.delete('/category_product/delete_by_id_product', ProductController.deleteCategoryProductByIdProduct);
-  router.post('/category_product/create', ProductController.createCategoryProduct);
+  router.get('/api/product/filter/:type', ProductController.getProductByType);
+  router.get('/api/product/filter/:price_from/:price_to', ProductController.getProductByPriceRange);
+  router.get('/api/product/filter/:type/:price_from/:price_to', ProductController.getProductByTypeAndPriceRange);
+  router.get('/api/product/filter/sort/only_sort/:value/:order_type', ProductController.getProductSorted);
+  router.get('/api/product/filter/sort/:type/:value/:order_type', ProductController.getProductSortedByType);
+  router.get('/api/product/filter/sort/:price_from/:price_to/:value/:order_type', ProductController.getProductSortedByPriceRange);
+  router.get('/api/product/filter/sort/:type/:price_from/:price_to/:value/:order_type', ProductController.getProductSortedByTypeAndPriceRange);
+
+  router.get('/api/product/search/only_search/:search', ProductController.getProductSearch);
+  router.get('/api/product/search/:search/:type', ProductController.getProductSearchByType);
+  router.get('/api/product/search/:search/:price_from/:price_to', ProductController.getProductSearchByPriceRange);
+  router.get('/api/product/search/:search/:type/:price_from/:price_to', ProductController.getProductSearchByTypeAndPriceRange);
+  router.get('/api/product/search/:search/:value/:order_type', ProductController.getProductSearchSorted);
+  router.get('/api/product/search/:search/:type/:value/:order_type', ProductController.getProductSearchSortedByType);
+  router.get('/api/product/search/:search/:price_from/:price_to/:value/:order_type', ProductController.getProductSearchSortedByPriceRange);
+  router.get('/api/product/search/:search/:type/:price_from/:price_to/:value/:order_type', ProductController.getProductSearchSortedByTypeAndPriceRange);
+
+  router.get('/api/product/:id_product', ProductController.getProductByIdProduct);
+  router.delete('/api/product/delete_by_id_product', ProductController.deleteProductByIdProduct);
+  router.post('/api/product/create', ProductController.createProduct);
+  router.put('/api/product/update_info_by_id_product', ProductController.updateProductInfoByIdProduct);
+  router.put('/api/product/update_storage_by_id_product', ProductController.updateProductStorageByIdProduct);
 };

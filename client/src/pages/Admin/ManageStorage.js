@@ -2,7 +2,7 @@ import { Button, Table } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { AddProduct, EditProduct } from '../../components';
 
-import { getAllProduct, getProductByIdProduct } from '../../components/API';
+import { getAllProduct, getProductByIdProduct } from '../../components/API/Product';
 function ManageStorage() {
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [showEditProduct, setShowEditProduct] = useState(false);

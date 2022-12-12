@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:5000
+@baseUrl = http://localhost:5000/api
 
 #Account
 # @name getAllAccount
@@ -6,7 +6,7 @@ GET {{baseUrl}}/account
 ###
 
 # @name getAccountByUsername
-GET {{baseUrl}}/account/tungba
+GET {{baseUrl}}/account/tungba1
 ###
 # @name deleteAccountByUsername
 DELETE {{baseUrl}}/account/delete_by_username
@@ -29,16 +29,16 @@ Content-Type: application/json
 PUT {{baseUrl}}/account/update_by_username
 Content-Type: application/json
 
-{
-    "username": "tungba2",
+  {
+    "username": "tungba1",
     "password": "1",
-    "name": "Tung Ba 2",
-    "image": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
-    "email": "tungba2@gmail.com",
+    "name": "Tung Ba 101",
+    "image": "https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/302171787_1812182202473423_2219482232048890630_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=enEAkEYByfoAX-FOwv9&_nc_ht=scontent.fhan14-2.fna&oh=00_AfDOZM0o2jIwjLuxV9sW3i_Tx7fwQoThEMCrWWeJpXEeRg&oe=639A87A2",
+    "email": "tungba1@gmail.com",
     "phoneNumber": "0965899821",
     "gender": "Male",
-    "dob": "2022/10/3"
-}
+    "dob": "2022-10-02"
+  }
 ###
 # @name getAllCategoryUser
 GET {{baseUrl}}/category_user
@@ -105,7 +105,7 @@ Content-Type: application/json
 
 {
     "username": "tungba1",
-    "idProduct": 12,
+    "idProduct": 2,
     "quantity": 2    
 }
 ###

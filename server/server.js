@@ -15,7 +15,6 @@ require('./app/routes/addressRoute')(app);
 require('./app/routes/feedbackRoute')(app);
 require('./app/routes/orderRoute')(app);
 require('./app/routes/productRoute')(app);
-require('./app/routes/storageHistoryRoute')(app);
 
 app.listen(5000, () => {
   console.log('Server started on port 5000');

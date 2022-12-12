@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { createAccount, getAllAccount } from '../../components/API';
+import { createAccount, getAllAccount } from '../../components/API/Account';
 function SignIn() {
   let navigate = useNavigate();
   const [username, setUsername] = useState('');

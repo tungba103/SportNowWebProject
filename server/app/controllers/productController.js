@@ -1,5 +1,4 @@
 var Product = require('../models/product');
-var ProductCategory = require('../models/categoryProduct');
 
 // Product
 exports.getAllProduct = (req, res) => {
@@ -7,6 +6,86 @@ exports.getAllProduct = (req, res) => {
     res.send(data);
   });
 };
+
+// Filter
+exports.getProductByType = (req, res) => {
+  Product.getProductByType(req.params.type, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductByPriceRange = (req, res) => {
+  Product.getProductByPriceRange(req.params.price_from, req.params.price_to, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductByTypeAndPriceRange = (req, res) => {
+  Product.getProductByTypeAndPriceRange(req.params.type, req.params.price_from, req.params.price_to, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSorted = (req, res) => {
+  Product.getProductSorted(req.params.value, req.params.order_type, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSortedByType = (req, res) => {
+  Product.getProductSortedByType(req.params.type, req.params.value, req.params.order_type, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSortedByPriceRange = (req, res) => {
+  Product.getProductSortedByPriceRange(req.params.price_from, req.params.price_to, req.params.value, req.params.order_type, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSortedByTypeAndPriceRange = (req, res) => {
+  Product.getProductSortedByTypeAndPriceRange(req.params.type, req.params.price_from, req.params.price_to, req.params.value, req.params.order_type, (data) => {
+    res.send(data);
+  });
+};
+// Search
+exports.getProductSearch = (req, res) => {
+  Product.getProductByType(req.params.search, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSearchByType = (req, res) => {
+  Product.getProductByType(req.params.search, req.params.type, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSearchByPriceRange = (req, res) => {
+  Product.getProductByPriceRange(req.params.search, req.params.price_from, req.params.price_to, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSearchByTypeAndPriceRange = (req, res) => {
+  Product.getProductByTypeAndPriceRange(req.params.search, req.params.type, req.params.price_from, req.params.price_to, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSearchSorted = (req, res) => {
+  Product.getProductSorted(req.params.search, req.params.value, req.params.order_type, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSearchSortedByType = (req, res) => {
+  Product.getProductSortedByType(req.params.search, req.params.type, req.params.value, req.params.order_type, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSearchSortedByPriceRange = (req, res) => {
+  Product.getProductSortedByPriceRange(req.params.search, req.params.price_from, req.params.price_to, req.params.value, req.params.order_type, (data) => {
+    res.send(data);
+  });
+};
+exports.getProductSearchSortedByTypeAndPriceRange = (req, res) => {
+  Product.getProductSortedByTypeAndPriceRange(req.params.search, req.params.type, req.params.price_from, req.params.price_to, req.params.value, req.params.order_type, (data) => {
+    res.send(data);
+  });
+};
+
+// CRUD
 exports.getProductByIdProduct = (req, res) => {
   Product.getProductByIdProduct(req.params.id_product, (data) => {
     res.send(data);
@@ -32,36 +111,6 @@ exports.updateProductInfoByIdProduct = (req, res) => {
 exports.updateProductStorageByIdProduct = (req, res) => {
   var ac = req.body;
   Product.updateProductStorageByIdProduct(ac, (data) => {
-    res.send(data);
-  });
-};
-
-// Category
-exports.getAllCategoryProduct = (req, res) => {
-  ProductCategory.getAllCategoryProduct((data) => {
-    res.send(data);
-  });
-};
-
-exports.getCategoryProductByIdProduct = (req, res) => {
-  ProductCategory.getCategoryProductByIdProduct(req.params.id_product, (data) => {
-    res.send(data);
-  });
-};
-
-exports.deleteCategoryProductByCName = (req, res) => {
-  ProductCategory.deleteCategoryProductByCName(req.body, (data) => {
-    res.send(data);
-  });
-};
-exports.deleteCategoryProductByIdProduct = (req, res) => {
-  ProductCategory.deleteCategoryProductByIdProduct(req.body, (data) => {
-    res.send(data);
-  });
-};
-exports.createCategoryProduct = (req, res) => {
-  var ac = req.body;
-  ProductCategory.createCategoryProduct(ac, (data) => {
     res.send(data);
   });
 };

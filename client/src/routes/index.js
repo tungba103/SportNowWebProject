@@ -2,7 +2,6 @@ import {
   FeedbackPage,
   HomePage,
   ItemDetailPage,
-  ProfilePage,
   SignIn,
   SignUp,
   CheckoutPage,
@@ -14,8 +13,13 @@ import {
   ShirtPage,
   ShortPage,
   SocksPage,
+  ProfileCon,
+  AddressCon,
+  CategoryCon,
+  PasswordCon,
+  OrderCon,
 } from '../pages';
-import { AdminLayout, DefaultLayout, UserLayout } from '../components';
+import { AdminLayout, DefaultLayout, ProfileLayout, UserLayout } from '../components';
 import Test from '../pages/Test';
 
 const WebRoutes = [
@@ -31,7 +35,11 @@ const WebRoutes = [
   { path: '/test', component: Test, Layout: DefaultLayout },
 
   { path: '/contact', component: FeedbackPage, Layout: UserLayout },
-  { path: '/profile', component: ProfilePage, Layout: UserLayout },
+  { path: '/profile_con', component: ProfileCon, Layout: ProfileLayout },
+  { path: '/address_con', component: AddressCon, Layout: ProfileLayout },
+  { path: '/category_con', component: CategoryCon, Layout: ProfileLayout },
+  { path: '/change_password_con', component: PasswordCon, Layout: ProfileLayout },
+  { path: '/order_con', component: OrderCon, Layout: ProfileLayout },
   { path: '/checkout', component: CheckoutPage, Layout: UserLayout },
 
   { path: '/admin', component: ManageRevenue, Layout: AdminLayout },

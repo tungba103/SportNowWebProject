@@ -1,6 +1,6 @@
 import { Table } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-import { getAllOrder } from '../../components/API';
+import { getAllOrder } from '../../components/API/Order';
 function ManageRevenue() {
   var cost = 0;
   const [orders, setOrders] = useState([

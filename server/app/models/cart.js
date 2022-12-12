@@ -65,11 +65,28 @@ exports.deleteCartItemByUsernameAndIdProduct = (ac, result) => {
 };
 
 exports.createProductToCart = (ac, result) => {
-  db.query(`INSERT INTO cart (username, idProduct,quantity) VALUES (?,?,?)`, [ac.username, ac.idProduct, ac.quantity], (err, cart) => {
-    if (err) console.log('err: ' + err);
-    else {
-      result(cart);
-      return;
+  db.query('SELECT * from cart where username = ? AND idProduct = ?', [ac.username, ac.idProduct], (err, cart) => {
+    if (err) {
+      console.log('err: ' + err);
+      result(null);
+    } else {
+      if (cart.length > 0) {
+        db.query('UPDATE cart SET quantity=? where username = ? AND idProduct=?', [ac.quantity, ac.username, ac.idProduct], (errUpdate, cartUpdate) => {
+          if (errUpdate) console.log('errUpdate: ' + errUpdate);
+          else {
+            result(cartUpdate);
+            return;
+          }
+        });
+      } else {
+        db.query(`INSERT INTO cart (username, idProduct,quantity) VALUES (?,?,?)`, [ac.username, ac.idProduct, ac.quantity], (errInsert, cartInsert) => {
+          if (errInsert) console.log('errInsert: ' + errInsert);
+          else {
+            result(cartInsert);
+            return;
+          }
+        });
+      }
     }
   });
 };

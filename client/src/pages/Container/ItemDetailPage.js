@@ -1,7 +1,8 @@
 import { faChevronCircleDown, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Item from '../../components/Item/Item';
-import { createCart, getProductByIdProduct } from '../../components/API';
+import { getProductByIdProduct } from '../../components/API/Product';
+import { createCart } from '../../components/API/Account';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 function ItemDetailPage(props) {

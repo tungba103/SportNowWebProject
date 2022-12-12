@@ -23,13 +23,16 @@ function UserHeader(props) {
           />
           <Dropdown floatingArrow inline label={<Avatar img={require('../../../../assets/web_image/user.png')} rounded={true} />}>
             <Dropdown.Item>
-              <Link to={'/profile'}>Profile</Link>
+              <Link to={'/profile_con'}>Profile</Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link to={'/profile'}>My Orders</Link>
+              <Link to={'/order_con'}>My Orders</Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link to={'/profile'}>My Address</Link>
+              <Link to={'/address_con'}>My Address</Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to={'/change_password_con'}>Change Password</Link>
             </Dropdown.Item>
             <Dropdown.Item
               onClick={() => {

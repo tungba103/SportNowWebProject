@@ -2,7 +2,7 @@ import { Label, Radio, TextInput } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartItem } from '../../components';
-import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, updateQuantityByUsernameAndIdProduct } from '../../components/API';
+import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, updateQuantityByUsernameAndIdProduct } from '../../components/API/Account';
 
 function CheckoutPage() {
   const [carts, setCarts] = useState();

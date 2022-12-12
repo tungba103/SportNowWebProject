@@ -1,10 +1,10 @@
 import { Item } from '../../components';
 import { Carousel, Card } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-import { getAllProduct } from '../../components/API';
+import { getAllProduct } from '../../components/API/Product';
 
 function HomePage(props) {
-  const [products, setProducts] = useState([{}]);
+  const [products, setProducts] = useState();
   useEffect(() => {
     getAllProduct((data) => setProducts(data));
   }, []);
@@ -33,11 +33,9 @@ function HomePage(props) {
             <span id="sort" className="ml-4 mr-2">
               <select className="text-sm xl:text-base" name="" id="">
                 <option value="">Price</option>
-                <option value="">0-100,000 đồng</option>
-                <option value="">100,000-200,000 đồng</option>
-                <option value="">200,000-300,000 đồng</option>
-                <option value="">300,000-500,000 đồng</option>
-                <option value="">500,000-1,000,000 đồng</option>
+                <option value="">0$ - 10$</option>
+                <option value="">10$- 20$</option>
+                <option value="">Over 20$</option>
               </select>
             </span>
           </div>
@@ -46,22 +44,27 @@ function HomePage(props) {
             <span id="sort" className="ml-4 mr-2">
               <select className="text-sm xl:text-base" name="" id="">
                 <option value="">Feature</option>
-                <option value="">Best selling</option>
                 <option value="">A-Z</option>
                 <option value="">Z-A</option>
                 <option value="">Price, high to low</option>
                 <option value="">Price, low to high</option>
-                <option value="">Date, old to new</option>
-                <option value="">Date, new to old</option>
               </select>
             </span>
           </div>
-          <span className="mt-1 mb-2 sm:mb-0 ml-2 sm:ml-0 sm:mt-0 ">4 products</span>
+          {typeof products === 'undefined' ? (
+            <span className="mt-1 mb-2 sm:mb-0 ml-2 sm:ml-0 sm:mt-0 ">... products</span>
+          ) : (
+            <span className="mt-1 mb-2 sm:mb-0 ml-2 sm:ml-0 sm:mt-0 ">{products.length} products</span>
+          )}
         </div>
         <div id="item-list" className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
-          {products.map((item, index) => {
-            return <Item key={index} idProduct={item.idProduct} image={item.image} title={item.title} price={item.price} />;
-          })}
+          {typeof products === 'undefined' ? (
+            <h1>Loading...</h1>
+          ) : (
+            products.map((item, index) => {
+              return <Item key={index} idProduct={item.idProduct} image={item.image} title={item.title} price={item.price} />;
+            })
+          )}
         </div>
       </div>
     </div>

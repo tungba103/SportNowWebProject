@@ -1,6 +1,6 @@
 import { Table } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-import { getAllFeedback } from '../../components/API';
+import { getAllFeedback } from '../../components/API/Feedback';
 function ManageFeedback() {
   const [feedbacks, setFeedbacks] = useState([
     {

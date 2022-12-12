@@ -1,6 +1,57 @@
-@baseUrl = http://localhost:5000
+@baseUrl = http://localhost:5000/api
 
 # @name getAllProduct
+GET {{baseUrl}}/product
+###
+
+# @name getProductByType
+GET {{baseUrl}}/product/filter/ball
+###
+# @name getProductByPriceRange
+GET {{baseUrl}}/product/filter/20/20
+###
+# @name getProductByTypeAndPriceRange
+GET {{baseUrl}}/product/filter/ball/10/20
+###
+# @name getProductSorted
+GET {{baseUrl}}/product/filter/sort/only_sort/price/ASC
+###
+# @name getProductSortedByType
+GET {{baseUrl}}/product/filter/sort/shirt/price/DESC
+###
+# @name getProductSortedByPriceRange
+GET {{baseUrl}}/product/filter/sort/10/20/price/DESC
+###
+# @name getProductSortedByTypeAndPriceRange
+GET {{baseUrl}}/product/filter/sort/socks/5/20/price/DESC
+###
+
+# @name getProductSearch
+GET {{baseUrl}}/product/search/only_search/a
+###
+# @name getProductSearchByType
+GET {{baseUrl}}/product/search/:search/shirt
+###
+# @name getProductSearchByPriceRange
+GET {{baseUrl}}/product/search/:search/10/20
+###
+# @name getProductSearchByTypeAndPriceRange
+GET {{baseUrl}}/product/search/:search/shirt/10/20
+###
+# @name getProductSearchSorted
+GET {{baseUrl}}/product/search/:search/price/DESC
+###
+# @name getProductSearchSortedByType
+GET {{baseUrl}}/product/search/:search/shirt/price/DESC
+###
+# @name getProductSearchSortedByPriceRange
+GET {{baseUrl}}/product/search/:search/10/20/price/DESC
+###
+# @name getProductSearchSortedByTypeAndPriceRange
+GET {{baseUrl}}/product/search/:search/shirt/10/20/price/DESC
+###
+
+# @name getAllShirtProduct
 GET {{baseUrl}}/product
 ###
 # @name getProductByIdProduct
@@ -51,34 +102,3 @@ Content-Type: application/json
 ###
 
 
-# @name getAllCategoryProduct
-GET {{baseUrl}}/category_product
-###
-# @name getCategoryProductByIdProduct
-GET {{baseUrl}}/category_product/1
-###
-# @name deleteCategoryProductByCName
-DELETE {{baseUrl}}/category_product/delete_by_c_name 
-Content-Type: application/json
-
-{
-    "cName": "astonvilla"
-}
-###
-# @name deleteCategoryProductByIdProduct
-DELETE {{baseUrl}}/category_product/delete_by_id_product 
-Content-Type: application/json
-
-{
-    "idProduct": "1"
-}
-###
-# @name createCategoryProduct
-POST {{baseUrl}}/category_product/create
-Content-Type: application/json
-
-{
-    "idProduct": "1",
-    "cName":"Hello"
-}
-###

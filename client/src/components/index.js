@@ -4,6 +4,7 @@ export { default as CartItem } from './Cart/CartItem';
 export { default as AdminLayout } from './Layout/AdminLayout/AdminLayout';
 export { default as DefaultLayout } from './Layout/DefaultLayout/DefaultLayout';
 export { default as UserLayout } from './Layout/DefaultLayout/UserLayout';
+export { default as ProfileLayout } from './Layout/DefaultLayout/ProfileLayout';
 
 export { default as AddAddress } from './Modals/AddAddress';
 export { default as AddProduct } from './Modals/AddProduct';
