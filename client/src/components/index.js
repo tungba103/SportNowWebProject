@@ -1,6 +1,8 @@
 export { default as Cart } from './Cart/Cart';
 export { default as CartItem } from './Cart/CartItem';
 
+export { default as Filter } from './Filter/Filter';
+
 export { default as AdminLayout } from './Layout/AdminLayout/AdminLayout';
 export { default as DefaultLayout } from './Layout/DefaultLayout/DefaultLayout';
 export { default as UserLayout } from './Layout/DefaultLayout/UserLayout';

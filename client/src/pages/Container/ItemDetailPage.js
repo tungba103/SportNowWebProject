@@ -1,7 +1,7 @@
 import { faChevronCircleDown, faChevronRight, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Item from '../../components/Item/Item';
-import { getProductByIdProduct } from '../../components/API/Product';
+import { getProductByIdProduct, getProductSearch } from '../../components/API/Product';
 import { createCart } from '../../components/API/Account';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -31,9 +31,11 @@ function ItemDetailPage(props) {
   const id = useParams();
   const [products, setProducts] = useState();
   const [quantity, setQuantity] = useState(1);
+  const [relativeProducts, setRelativeProducts] = useState();
   useEffect(() => {
     getProductByIdProduct((data) => setProducts(data), id.id);
-  }, []);
+  }, [id.id]);
+  if (typeof products !== 'undefined') getProductSearch((data) => setRelativeProducts(data), products[0].image.slice(0, 6));
   return (
     <div className="bg-orange-50 mt-32">
       <div id="item" className="p-4 sm:p-10">
@@ -79,14 +81,16 @@ function ItemDetailPage(props) {
                 <span className="mx-8">{quantity}</span>
                 <FontAwesomeIcon icon={faPlus} className="cursor-pointer" onClick={() => setQuantity(quantity + 1)} />
               </div>
-              <button
-                onClick={() => {
-                  createCart(sessionStorage.getItem('username'), id.id, quantity);
-                }}
-                className="mt-6 mb-2 w-full sm:w-96 sm:text-lg rounded-3xl border border-sky-800  px-4  sm:py-3 bg-orange-100 hover:bg-orange-400 py-2"
-              >
-                Add to cart
-              </button>
+              {sessionStorage.getItem('username') != null && (
+                <button
+                  onClick={() => {
+                    createCart(sessionStorage.getItem('username'), id.id, quantity);
+                  }}
+                  className="mt-6 mb-2 w-full sm:w-96 sm:text-lg rounded-3xl border border-sky-800  px-4  sm:py-3 bg-orange-100 hover:bg-orange-400 py-2"
+                >
+                  Add to cart
+                </button>
+              )}
               <p className="text-sm sm:text-base sm:w-96">{products[0].description}</p>
             </div>
           </div>
@@ -94,9 +98,13 @@ function ItemDetailPage(props) {
         <div id="item-same" className="mt-10">
           <p className="font-bold text-xl sm:text-3xl py-4">Pairs well with</p>
           <div id="item-list" className="grid grid-cols-2 sm:grid-cols-8 sm:gap-8">
-            {items.map((item, index) => {
-              return <Item key={index} image={`${item.image}`} name={`${item.name}`} price={`${item.price}`}></Item>;
-            })}
+            {typeof relativeProducts === 'undefined' ? (
+              <h1>Loading...</h1>
+            ) : (
+              relativeProducts.map((item, index) => {
+                return <Item key={index} image={`${item.image}`} title={`${item.title}`} price={`${item.price}`} />;
+              })
+            )}
           </div>
         </div>
       </div>

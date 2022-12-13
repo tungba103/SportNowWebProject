@@ -18,6 +18,7 @@ import {
   CategoryCon,
   PasswordCon,
   OrderCon,
+  SearchPage,
 } from '../pages';
 import { AdminLayout, DefaultLayout, ProfileLayout, UserLayout } from '../components';
 import Test from '../pages/Test';
@@ -32,6 +33,7 @@ const WebRoutes = [
   { path: '/short', component: ShortPage, Layout: DefaultLayout },
   { path: '/socks', component: SocksPage, Layout: DefaultLayout },
   { path: '/detail/:id', component: ItemDetailPage, Layout: DefaultLayout },
+  { path: '/search/:search', component: SearchPage, Layout: DefaultLayout },
   { path: '/test', component: Test, Layout: DefaultLayout },
 
   { path: '/contact', component: FeedbackPage, Layout: UserLayout },

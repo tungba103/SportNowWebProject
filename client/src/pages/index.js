@@ -14,6 +14,7 @@ export { default as ItemDetailPage } from './Container/ItemDetailPage';
 export { default as ShirtPage } from './Container/ShirtPage';
 export { default as ShortPage } from './Container/ShortPage';
 export { default as SocksPage } from './Container/SocksPage';
+export { default as SearchPage } from './Container/SearchPage';
 
 export { default as FeedbackPage } from './Feedback/FeedbackPage';
 export { default as AddressCon } from './Profile/AddressCon';

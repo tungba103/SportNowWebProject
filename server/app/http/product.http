@@ -14,7 +14,7 @@ GET {{baseUrl}}/product/filter/20/20
 GET {{baseUrl}}/product/filter/ball/10/20
 ###
 # @name getProductSorted
-GET {{baseUrl}}/product/filter/sort/only_sort/price/ASC
+GET {{baseUrl}}/product/filter/sort/only_sort/title/DESC
 ###
 # @name getProductSortedByType
 GET {{baseUrl}}/product/filter/sort/shirt/price/DESC
@@ -27,28 +27,28 @@ GET {{baseUrl}}/product/filter/sort/socks/5/20/price/DESC
 ###
 
 # @name getProductSearch
-GET {{baseUrl}}/product/search/only_search/a
+GET {{baseUrl}}/product/search/man
 ###
 # @name getProductSearchByType
-GET {{baseUrl}}/product/search/:search/shirt
+GET {{baseUrl}}/product/search/filter/arsenal/shirt
 ###
 # @name getProductSearchByPriceRange
-GET {{baseUrl}}/product/search/:search/10/20
+GET {{baseUrl}}/product/search/filter/arsenal/10/20
 ###
 # @name getProductSearchByTypeAndPriceRange
-GET {{baseUrl}}/product/search/:search/shirt/10/20
+GET {{baseUrl}}/product/search/filter/arsenal/shirt/10/20
 ###
 # @name getProductSearchSorted
-GET {{baseUrl}}/product/search/:search/price/DESC
+GET {{baseUrl}}/product/search/sort/arsenal/price/DESC
 ###
 # @name getProductSearchSortedByType
-GET {{baseUrl}}/product/search/:search/shirt/price/DESC
+GET {{baseUrl}}/product/search/sort/arsenal/shirt/price/DESC
 ###
 # @name getProductSearchSortedByPriceRange
-GET {{baseUrl}}/product/search/:search/10/20/price/DESC
+GET {{baseUrl}}/product/search/sort/arsenal/10/20/price/DESC
 ###
 # @name getProductSearchSortedByTypeAndPriceRange
-GET {{baseUrl}}/product/search/:search/shirt/10/20/price/DESC
+GET {{baseUrl}}/product/search/sort/arsenal/shirt/10/20/price/DESC
 ###
 
 # @name getAllShirtProduct

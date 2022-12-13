@@ -13,55 +13,115 @@ const getProductByIdProduct = (result, idProduct) => {
     });
 };
 
+// Filter
 const getProductByType = (result, type) => {
-  fetch(`/apiapi/product/filter/${type}`)
+  fetch(`/api/product/filter/${type}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getProductByPriceRange = (result, priceFrom, priceTo) => {
-  fetch(`/apiapi/product/filter/${priceFrom}/${priceTo}`)
+  fetch(`/api/product/filter/${priceFrom}/${priceTo}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getProductByTypeAndPriceRange = (result, type, priceFrom, priceTo) => {
-  fetch(`/apiapi/product/filter/${type}/${priceFrom}/${priceTo}`)
+  fetch(`/api/product/filter/${type}/${priceFrom}/${priceTo}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getProductSorted = (result, value, orderType) => {
-  fetch(`/apiapi/product/filter/only_sort/${value}/${orderType}`)
+  fetch(`/api/product/filter/sort/only_sort/${value}/${orderType}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getProductSortedByType = (result, type, value, orderType) => {
-  fetch(`/apiapi/product/filter/sort/${type}/${value}/${orderType}`)
+  fetch(`/api/product/filter/sort/${type}/${value}/${orderType}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getProductSortedByPriceRange = (result, priceFrom, priceTo, value, orderType) => {
-  fetch(`/apiapi/product/filter/sort/${priceFrom}/${priceTo}/${value}/${orderType}`)
+  fetch(`/api/product/filter/sort/${priceFrom}/${priceTo}/${value}/${orderType}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
 const getProductSortedByTypeAndPriceRange = (result, type, priceFrom, priceTo, value, orderType) => {
-  fetch(`/apiapi/product/filter/sort/${type}/${priceFrom}/${priceTo}/${value}/${orderType}`)
+  fetch(`/api/product/filter/sort/${type}/${priceFrom}/${priceTo}/${value}/${orderType}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
     });
 };
+
+// Search
+const getProductSearch = (result, search) => {
+  fetch(`/api/product/search/${search}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+const getProductSearchByType = (result, search, type) => {
+  fetch(`/api/product/search/filter/${search}/${type}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+const getProductSearchByPriceRange = (result, search, priceFrom, priceTo) => {
+  fetch(`/api/product/search/filter/${search}/${priceFrom}/${priceTo}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+const getProductSearchByTypeAndPriceRange = (result, search, type, priceFrom, priceTo) => {
+  fetch(`/api/product/search/filter/${search}/${type}/${priceFrom}/${priceTo}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+const getProductSearchSorted = (result, search, value, orderType) => {
+  fetch(`/api/product/search/sort/${search}/${value}/${orderType}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+const getProductSearchSortedByType = (result, search, type, value, orderType) => {
+  fetch(`/api/product/search/sort/${search}/${type}/${value}/${orderType}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+const getProductSearchSortedByPriceRange = (result, search, priceFrom, priceTo, value, orderType) => {
+  fetch(`/api/product/search/sort/${search}/${priceFrom}/${priceTo}/${value}/${orderType}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+const getProductSearchSortedByTypeAndPriceRange = (result, search, type, priceFrom, priceTo, value, orderType) => {
+  fetch(`/api/product/search/sort/${search}/${type}/${priceFrom}/${priceTo}/${value}/${orderType}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+
 const createProduct = (title, price, image, description, storage, sold) => {
   fetch('/api/product/create', {
     method: 'POST',
@@ -109,6 +169,14 @@ export {
   getProductSortedByType,
   getProductSortedByTypeAndPriceRange,
   getProductByIdProduct,
+  getProductSearch,
+  getProductSearchByType,
+  getProductSearchByPriceRange,
+  getProductSearchByTypeAndPriceRange,
+  getProductSearchSorted,
+  getProductSearchSortedByPriceRange,
+  getProductSearchSortedByType,
+  getProductSearchSortedByTypeAndPriceRange,
   createProduct,
   updateProductInfoByIdProduct,
   updateProductStorageByIdProduct,

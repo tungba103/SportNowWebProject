@@ -8,9 +8,10 @@ function Cart(props) {
   const username = sessionStorage.getItem('username');
   const [carts, setCarts] = useState();
   const [cartHandle, setCartHandle] = useState();
+  sessionStorage.setItem('cart', Math.random());
   useEffect(() => {
     getCartByUsername((data) => setCarts(data), username);
-  }, [cartHandle]);
+  }, [cartHandle, sessionStorage.getItem('cart')]);
   return (
     <div>
       <div className={`${props.visibility} fixed top-0 right-0 z-10 h-full w-full bg-orange-200 bg-opacity-40 text-gray-900`}>

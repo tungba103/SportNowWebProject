@@ -17,14 +17,17 @@ function Item({ idProduct, title, price, image }) {
           <p className="py-1 text-sm sm:text-base">${price}</p>
         </div>
         <div className="flex justify-center">
-          <button
-            onClick={() => {
-              createCart(sessionStorage.getItem('username'), idProduct, 1);
-            }}
-            className="mt-2 rounded-3xl border border-sky-800 py-2 px-4 w-36 sm:py-3 bg-orange-100 hover:bg-orange-400"
-          >
-            Add to cart
-          </button>
+          {sessionStorage.getItem('username') != null && (
+            <button
+              onClick={() => {
+                createCart(sessionStorage.getItem('username'), idProduct, 1);
+                sessionStorage.setItem('cart', Math.random());
+              }}
+              className="mt-2 rounded-3xl border border-sky-800 py-2 px-4 w-36 sm:py-3 bg-orange-100 hover:bg-orange-400"
+            >
+              Add to cart
+            </button>
+          )}
         </div>
       </div>
     </div>

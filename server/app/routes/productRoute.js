@@ -10,14 +10,14 @@ module.exports = (router) => {
   router.get('/api/product/filter/sort/:price_from/:price_to/:value/:order_type', ProductController.getProductSortedByPriceRange);
   router.get('/api/product/filter/sort/:type/:price_from/:price_to/:value/:order_type', ProductController.getProductSortedByTypeAndPriceRange);
 
-  router.get('/api/product/search/only_search/:search', ProductController.getProductSearch);
-  router.get('/api/product/search/:search/:type', ProductController.getProductSearchByType);
-  router.get('/api/product/search/:search/:price_from/:price_to', ProductController.getProductSearchByPriceRange);
-  router.get('/api/product/search/:search/:type/:price_from/:price_to', ProductController.getProductSearchByTypeAndPriceRange);
-  router.get('/api/product/search/:search/:value/:order_type', ProductController.getProductSearchSorted);
-  router.get('/api/product/search/:search/:type/:value/:order_type', ProductController.getProductSearchSortedByType);
-  router.get('/api/product/search/:search/:price_from/:price_to/:value/:order_type', ProductController.getProductSearchSortedByPriceRange);
-  router.get('/api/product/search/:search/:type/:price_from/:price_to/:value/:order_type', ProductController.getProductSearchSortedByTypeAndPriceRange);
+  router.get('/api/product/search/:search', ProductController.getProductSearch);
+  router.get('/api/product/search/filter/:search/:type', ProductController.getProductSearchByType);
+  router.get('/api/product/search/filter/:search/:price_from/:price_to', ProductController.getProductSearchByPriceRange);
+  router.get('/api/product/search/filter/:search/:type/:price_from/:price_to', ProductController.getProductSearchByTypeAndPriceRange);
+  router.get('/api/product/search/sort/:search/:value/:order_type', ProductController.getProductSearchSorted);
+  router.get('/api/product/search/sort/:search/:type/:value/:order_type', ProductController.getProductSearchSortedByType);
+  router.get('/api/product/search/sort/:search/:price_from/:price_to/:value/:order_type', ProductController.getProductSearchSortedByPriceRange);
+  router.get('/api/product/search/sort/:search/:type/:price_from/:price_to/:value/:order_type', ProductController.getProductSearchSortedByTypeAndPriceRange);
 
   router.get('/api/product/:id_product', ProductController.getProductByIdProduct);
   router.delete('/api/product/delete_by_id_product', ProductController.deleteProductByIdProduct);
