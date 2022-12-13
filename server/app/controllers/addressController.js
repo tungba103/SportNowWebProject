@@ -10,6 +10,11 @@ exports.getAddressByUsername = (req, res) => {
     res.send(data);
   });
 };
+exports.getAddressByIdAddress = (req, res) => {
+  Address.getAddressByIdAddress(req.params.id_address, (data) => {
+    res.send(data);
+  });
+};
 exports.deleteAddressByUsername = (req, res) => {
   var ac = req.body;
   Address.deleteAddressByUsername(ac, (data) => {

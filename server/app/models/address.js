@@ -23,6 +23,17 @@ exports.getAddressByUsername = (username, result) => {
     }
   });
 };
+exports.getAddressByIdAddress = (idAddress, result) => {
+  db.query(`SELECT * from address where idAddress = ?`, [idAddress], (err, address) => {
+    if (err) {
+      console.log('err: ' + err);
+      result(null);
+    } else {
+      result(address);
+      return;
+    }
+  });
+};
 
 exports.deleteAddressByUsername = (ac, result) => {
   db.query(`DELETE from address where username = ?`, [ac.username], (err, address) => {

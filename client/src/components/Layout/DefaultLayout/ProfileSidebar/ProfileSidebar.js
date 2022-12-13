@@ -2,11 +2,9 @@ import { faClipboard, faUserLarge } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ChangeAvatar from '../../../Modals/ChangeAvatar';
 import { getAccountByUsername } from '../../../API/Account';
 
 function ProfileSidebar() {
-  const [showChangeAvatar, setShowChangeAvatar] = useState(false);
   const [account, setAccount] = useState();
   useEffect(() => {
     getAccountByUsername((data) => setAccount(data), sessionStorage.getItem('username'));
@@ -18,10 +16,6 @@ function ProfileSidebar() {
           <img src={require(`../../../../assets/web_image/user.png`)} className="h-12 w-12 sm:h-14 ml-3 mb-2 sm:mb-0 sm:ml-0 sm:w-14 rounded-full" alt="" />
           <div className="sm:ml-4 flex-col items-center">
             <p className="font-bold ml-1">username</p>
-            <p className="text-sm ml-1 text-gray-900 cursor-pointer" onClick={() => setShowChangeAvatar(true)}>
-              Change avatar
-            </p>
-            <ChangeAvatar show={showChangeAvatar} onClose={() => setShowChangeAvatar(false)} />
           </div>
         </div>
       ) : (
@@ -29,10 +23,6 @@ function ProfileSidebar() {
           <img src={account[0].image} className="h-12 w-12 sm:h-14 ml-3 mb-2 sm:mb-0 sm:ml-0 sm:w-14 rounded-full" alt="" />
           <div className="sm:ml-4 flex-col items-center">
             <p className="font-bold ml-1">{account[0].name}</p>
-            <p className="text-sm ml-1 text-gray-900 cursor-pointer" onClick={() => setShowChangeAvatar(true)}>
-              Change avatar
-            </p>
-            <ChangeAvatar show={showChangeAvatar} onClose={() => setShowChangeAvatar(false)} />
           </div>
         </div>
       )}

@@ -30,7 +30,7 @@ function CategoryCon() {
         <div className="flex flex-col sm:flex-row flex-wrap mt-10 px-10">
           {cates.map((cate, i) => {
             return (
-              <div className="flex justify-center items-center px-2 bg-orange-400 rounded-lg sm:p-2 sm:m-2 ">
+              <div key={i} className="flex justify-center items-center px-2 bg-orange-400 rounded-lg sm:p-2 sm:m-2 ">
                 <p key={i} size="sm" className="w-24 text-lg">
                   {cate}
                 </p>

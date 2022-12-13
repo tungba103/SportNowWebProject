@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.dcd4a000.css",
-    "main.js": "/static/js/main.98c5b871.js",
+    "main.css": "/static/css/main.a52e197c.css",
+    "main.js": "/static/js/main.1e088f45.js",
     "static/media/bournemouth_shirt.png": "/static/media/bournemouth_shirt.cdb3c86b12afa399ca06.png",
     "static/media/background.jpg": "/static/media/background.f68d6728225eb9d1daba.jpg",
     "static/media/arsenal_ball.png": "/static/media/arsenal_ball.5b07ba398e14e9e348f3.png",
@@ -73,11 +73,11 @@
     "static/media/everton_short.jpg": "/static/media/everton_short.ee5d9447555b363c19ae.jpg",
     "static/media/leeds_short.jpg": "/static/media/leeds_short.8590b2baac8a6c724e51.jpg",
     "index.html": "/index.html",
-    "main.dcd4a000.css.map": "/static/css/main.dcd4a000.css.map",
-    "main.98c5b871.js.map": "/static/js/main.98c5b871.js.map"
+    "main.a52e197c.css.map": "/static/css/main.a52e197c.css.map",
+    "main.1e088f45.js.map": "/static/js/main.1e088f45.js.map"
   },
   "entrypoints": [
-    "static/css/main.dcd4a000.css",
-    "static/js/main.98c5b871.js"
+    "static/css/main.a52e197c.css",
+    "static/js/main.1e088f45.js"
   ]
 }

@@ -1,11 +1,12 @@
 import { Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { InputText, InputSelect, AddAddress, EditAddress } from '../../components';
-import { getAddressByUsername } from '../../components/API/Address';
+import { deleteAddressByIdAddress, getAddressByUsername } from '../../components/API/Address';
 function AddressCon() {
   const [showAddAddress, setShowAddAddress] = useState(false);
   const [showEditAddress, setShowEditAddress] = useState(false);
   const [addresses, setAddresses] = useState();
+  const [idAddress, setIdAddress] = useState(1);
   useEffect(() => {
     getAddressByUsername((data) => setAddresses(data), sessionStorage.getItem('username'));
   });
@@ -30,17 +31,24 @@ function AddressCon() {
                 <p className="px-4 py-2 bg-orange-400 w-fit rounded-xl">
                   {address.name} - {address.phone} - {address.province} - {address.district} - {address.subDistrict} - {address.detail}
                 </p>
-                <Button onClick={() => setShowEditAddress(true)} className="ml-4" size={'sm'}>
+                <Button
+                  onClick={() => {
+                    setIdAddress(address.idAddress);
+                    setShowEditAddress(true);
+                  }}
+                  className="ml-4"
+                  size={'sm'}
+                >
                   Edit
                 </Button>
-                <Button className="ml-4" size={'sm'} color="failure">
+                <Button onClick={() => deleteAddressByIdAddress(address.idAddress)} className="ml-4" size={'sm'} color="failure">
                   Remove
                 </Button>
               </div>
             );
           })
         )}
-        <EditAddress show={showEditAddress} onClose={() => setShowEditAddress(false)} />
+        <EditAddress idAddress={idAddress} show={showEditAddress} onClose={() => setShowEditAddress(false)} />
         <div className="flex justify-center">
           <Button onClick={() => setShowAddAddress(true)}>Add address</Button>
           <AddAddress show={showAddAddress} onClose={() => setShowAddAddress(false)} />

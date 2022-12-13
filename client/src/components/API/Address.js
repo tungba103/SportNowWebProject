@@ -6,7 +6,14 @@ const getAllAddress = (result) => {
     });
 };
 const getAddressByUsername = (result, username) => {
-  fetch(`/api/address/${username}`)
+  fetch(`/api/address/username/${username}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
+const getAddressByIdAddress = (result, idAddress) => {
+  fetch(`/api/address/id_address/${idAddress}`)
     .then((response) => response.json())
     .then((data) => {
       result(data);
@@ -41,4 +48,4 @@ const deleteAddressByIdAddress = (idAddress) => {
   });
 };
 
-export { getAllAddress, getAddressByUsername, createAddress, updateAddressByIdAddress, deleteAddressByIdAddress };
+export { getAllAddress, getAddressByUsername, getAddressByIdAddress, createAddress, updateAddressByIdAddress, deleteAddressByIdAddress };
