@@ -1,6 +1,6 @@
-import { Label, Radio, TextInput } from 'flowbite-react';
+import { Button, Label, Radio, TextInput } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CartItem } from '../../components';
 import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, updateQuantityByUsernameAndIdProduct } from '../../components/API/Account';
 import { getAddressByUsername } from '../../components/API/Address';
@@ -40,6 +40,13 @@ function CheckoutPage() {
         <div>
           <Radio id="1" name="address" />
           <Label className="ml-4" value="Address" htmlFor="1"></Label>
+        </div>
+      ) : addresses.length === 0 ? (
+        <div className="flex flex-col items-center">
+          <p className="text-xl mb-4">You don't have any address! Please add your address</p>
+          <Button>
+            <Link to={'/address_con'}>Add address</Link>
+          </Button>
         </div>
       ) : (
         addresses.map((address, i) => {
