@@ -122,11 +122,11 @@ const getProductSearchSortedByTypeAndPriceRange = (result, search, type, priceFr
     });
 };
 
-const createProduct = (title, price, image, description, storage, sold) => {
+const createProduct = (title, type, price, image, description, storage, sold) => {
   fetch('/api/product/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title: title, price: price, image: image, description: description, storage: storage, sold: sold }),
+    body: JSON.stringify({ title: title, type: type, price: price, image: image, description: description, storage: storage, sold: sold }),
   }).then(() => {
     console.log('new Product added');
   });

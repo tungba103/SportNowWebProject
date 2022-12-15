@@ -2,7 +2,7 @@ import { Button, Label, Radio, TextInput } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CartItem } from '../../components';
-import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, updateQuantityByUsernameAndIdProduct } from '../../components/API/Account';
+import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, getTotalOnCart, updateQuantityByUsernameAndIdProduct } from '../../components/API/Account';
 import { getAddressByUsername } from '../../components/API/Address';
 import { createOrder, createOrderItem, getOrderByUsername } from '../../components/API/Order';
 import { getProductByIdProduct, updateProductStorageByIdProduct } from '../../components/API/Product';
@@ -11,6 +11,11 @@ function CheckoutPage() {
   const [addresses, setAddresses] = useState();
   const [carts, setCarts] = useState();
   const [cartHandle, setCartHandle] = useState();
+
+  const [total, setTotal] = useState();
+  useEffect(() => {
+    getTotalOnCart((data) => setTotal(data), sessionStorage.getItem('username'));
+  }, [cartHandle]);
 
   const [product, setProduct] = useState();
   const [order, setOrder] = useState();
@@ -21,11 +26,18 @@ function CheckoutPage() {
   useEffect(() => {
     getAddressByUsername((data) => setAddresses(data), sessionStorage.getItem('username'));
   }, []);
+  const getTime = () => {
+    const d = new Date();
+    let day = d.getDate();
+    let month = d.getMonth();
+    let year = d.getFullYear();
+    return day + '-' + month + '-' + year;
+  };
   const submitOrder = () => {
-    createOrder(sessionStorage.getItem('username'), '15-12-2022', 'TungBa - Son La', 33);
+    createOrder(sessionStorage.getItem('username'), getTime(), address, 50);
     getOrderByUsername((data) => setOrder(data), sessionStorage.getItem('username'));
     for (let i = 0; i < carts.length; i++) {
-      createOrderItem(order[0].idOrder, carts[i].idProduct, carts[i].quantity);
+      createOrderItem(order[0].idOrder, carts[i].idProduct, carts[i].quantity, carts[i].total);
       getProductByIdProduct((data) => setProduct(data), carts[i].idProduct);
       updateProductStorageByIdProduct(carts[i].idProduct, product[0].storage - carts[i].quantity, product[0].sold + carts[i].quantity);
     }
@@ -110,16 +122,18 @@ function CheckoutPage() {
               username={cartItem.username}
               idProduct={cartItem.idProduct}
               quantity={cartItem.quantity}
+              totalCI={cartItem.total}
               deleteCartItem={() => {
                 deleteCartItemByUsernameAndIdProduct(cartItem.username, cartItem.idProduct);
               }}
-              updateQuantity={(quantity) => {
-                updateQuantityByUsernameAndIdProduct(cartItem.username, cartItem.idProduct, quantity);
+              updateQuantity={(quantity, total) => {
+                updateQuantityByUsernameAndIdProduct(cartItem.username, cartItem.idProduct, quantity, total);
               }}
               updateCart={(quantity) => setCartHandle(quantity)}
             ></CartItem>
           );
         })}
+      <div className="font-bold flex justify-end">{typeof total === 'undefined' ? <p>Total: $0</p> : <p>Total: ${total[0].total}</p>}</div>
 
       <p className="pb-2 text-xl font-bold">Your payment</p>
       <p className="text-lg ml-4">Choose your payment method:</p>

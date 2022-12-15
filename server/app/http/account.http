@@ -5,6 +5,7 @@
 GET {{baseUrl}}/account
 ###
 
+
 # @name getAccountByUsername
 GET {{baseUrl}}/account/tungba1
 ###
@@ -82,6 +83,9 @@ GET {{baseUrl}}/cart
 # @name getCartByIdCart
 {{baseUrl}}/cart/1
 ###
+# @name getTotalOnCart
+{{baseUrl}}/cart/total/tungba4
+###
 # @name deleteCartByUsername
 DELETE {{baseUrl}}/cart/delete_by_username
 Content-Type: application/json 
@@ -104,9 +108,10 @@ POST {{baseUrl}}/cart/create
 Content-Type: application/json
 
 {
-    "username": "tungba1",
+    "username": "tungba4",
     "idProduct": 2,
-    "quantity": 2    
+    "quantity": 2, 
+    "total": 90   
 }
 ###
 # @name updateQuantityByUsernameAndIdProduct
@@ -114,8 +119,9 @@ PUT {{baseUrl}}/cart/update_by_username_and_id_product
 Content-Type: application/json
 
 {
-    "username": "tungba",
-    "idProduct": 10,
-    "quantity": 4    
+    "username": "tungba4",
+    "idProduct": 2,
+    "quantity": 2,
+    "total": 22    
 }
 ###

@@ -3,12 +3,18 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import CartItem from './CartItem';
 import { Link } from 'react-router-dom';
-import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, updateQuantityByUsernameAndIdProduct } from '../API/Account';
+import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, getTotalOnCart, updateQuantityByUsernameAndIdProduct } from '../API/Account';
 function Cart(props) {
   const username = sessionStorage.getItem('username');
   const [carts, setCarts] = useState();
   const [cartHandle, setCartHandle] = useState();
-  sessionStorage.setItem('cart', Math.random());
+
+  const [total, setTotal] = useState();
+  useEffect(() => {
+    getTotalOnCart((data) => setTotal(data), sessionStorage.getItem('username'));
+  }, [cartHandle, sessionStorage.getItem('cart')]);
+
+  // sessionStorage.setItem('cart', Math.random());
   useEffect(() => {
     getCartByUsername((data) => setCarts(data), username);
   }, [cartHandle, sessionStorage.getItem('cart')]);
@@ -52,27 +58,31 @@ function Cart(props) {
                     username={cartItem.username}
                     idProduct={cartItem.idProduct}
                     quantity={cartItem.quantity}
+                    totalCI={cartItem.total}
                     deleteCartItem={() => {
                       deleteCartItemByUsernameAndIdProduct(cartItem.username, cartItem.idProduct);
                     }}
-                    updateQuantity={(quantity) => {
-                      updateQuantityByUsernameAndIdProduct(cartItem.username, cartItem.idProduct, quantity);
+                    updateQuantity={(quantity, total) => {
+                      updateQuantityByUsernameAndIdProduct(cartItem.username, cartItem.idProduct, quantity, total);
                     }}
                     updateCart={(quantity) => setCartHandle(quantity)}
-                  ></CartItem>
+                  />
                 );
               })
             )}
             {typeof carts !== 'undefined' && carts.length !== 0 && (
-              <div className="flex justify-center">
-                <button
-                  className="px-6 py-2 rounded-3xl bg-orange-500 font-bold text-xl text-white opacity-90 hover:opacity-100 mt-10"
-                  onClick={() => {
-                    props.setDisplayCart('hidden');
-                  }}
-                >
-                  <Link to="/checkout">Check out</Link>
-                </button>
+              <div>
+                <div className="font-bold flex justify-end">{typeof total === 'undefined' ? <p>Total: $0</p> : <p>Total: ${total[0].total}</p>}</div>
+                <div className="flex justify-center">
+                  <button
+                    className="px-6 py-2 rounded-3xl bg-orange-500 font-bold text-xl text-white opacity-90 hover:opacity-100 mt-10"
+                    onClick={() => {
+                      props.setDisplayCart('hidden');
+                    }}
+                  >
+                    <Link to="/checkout">Check out</Link>
+                  </button>
+                </div>
               </div>
             )}
           </div>

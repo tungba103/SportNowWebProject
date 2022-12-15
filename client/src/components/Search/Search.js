@@ -18,8 +18,8 @@ function Search(props) {
           onKeyDown={(e) => {
             setSearch(e.target.value);
             if (e.key === 'Enter') {
-              console.log(e.target.value);
-              navigate(`/search/${search}`);
+              if (e.target.value === '') navigate('/search');
+              else navigate(`/search/${search}`);
               props.setDisplaySearch('hidden');
             }
           }}

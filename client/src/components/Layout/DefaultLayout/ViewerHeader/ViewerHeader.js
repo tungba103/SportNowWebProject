@@ -43,11 +43,6 @@ function ViewerHeader(props) {
             <Link to="/ball">Ball</Link>
           </p>
         </div>
-        <div className="nav-item mx-3 cursor-pointer border-b border-orange-600 text-gray-100 hover:border-white hover:font-bold hover:text-white">
-          <p>
-            <Link to="/contact">Contact</Link>
-          </p>
-        </div>
       </div>
     </div>
   );

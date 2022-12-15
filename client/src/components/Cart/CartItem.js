@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { getProductByIdProduct } from '../../components/API/Product';
-function CartItem({ username, idProduct, quantity, deleteCartItem, updateQuantity, updateCart }) {
+function CartItem({ username, idProduct, quantity, totalCI, deleteCartItem, updateQuantity, updateCart }) {
   const [products, setProducts] = useState();
   useEffect(() => {
     getProductByIdProduct((data) => setProducts(data), idProduct);
@@ -16,7 +16,8 @@ function CartItem({ username, idProduct, quantity, deleteCartItem, updateQuantit
             <p className="w-24 text-sm font-bold">{products[0].title}</p>
             <p className="text-sm text-gray-500">${products[0].price}</p>
           </div>
-          <p>${products[0].price * quantity}</p>
+          {/* <p>${products[0].price * quantity}</p> */}
+          <p>${totalCI}</p>
         </div>
       )}
       <div className="mt-2 flex items-center justify-center">
@@ -24,7 +25,7 @@ function CartItem({ username, idProduct, quantity, deleteCartItem, updateQuantit
           <FontAwesomeIcon
             icon={faMinus}
             onClick={() => {
-              updateQuantity(quantity - 1);
+              updateQuantity(quantity - 1, products[0].price * (quantity - 1));
               updateCart(quantity - 1);
             }}
             className="cursor-pointer"
@@ -33,7 +34,7 @@ function CartItem({ username, idProduct, quantity, deleteCartItem, updateQuantit
           <FontAwesomeIcon
             icon={faPlus}
             onClick={() => {
-              updateQuantity(quantity + 1);
+              updateQuantity(quantity + 1, products[0].price * (quantity + 1));
               updateCart(quantity + 1);
             }}
             className="cursor-pointer"

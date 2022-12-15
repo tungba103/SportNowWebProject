@@ -34,6 +34,7 @@ const WebRoutes = [
   { path: '/socks', component: SocksPage, Layout: DefaultLayout },
   { path: '/detail/:id', component: ItemDetailPage, Layout: DefaultLayout },
   { path: '/search/:search', component: SearchPage, Layout: DefaultLayout },
+  { path: '/search', component: SearchPage, Layout: DefaultLayout },
   { path: '/test', component: Test, Layout: DefaultLayout },
 
   { path: '/contact', component: FeedbackPage, Layout: UserLayout },

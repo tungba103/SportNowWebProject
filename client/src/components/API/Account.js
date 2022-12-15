@@ -85,6 +85,13 @@ const deleteCategoryUserItemByUsernameAndCuName = (username, cuName) => {
 };
 
 // Cart
+const getTotalOnCart = (result, username) => {
+  fetch(`/api/cart/total/${username}`)
+    .then((response) => response.json())
+    .then((data) => {
+      result(data);
+    });
+};
 const getAllCart = (result) => {
   fetch('/api/cart')
     .then((response) => response.json())
@@ -99,20 +106,20 @@ const getCartByUsername = (result, username) => {
       result(data);
     });
 };
-const createCart = (username, idProduct, quantity) => {
+const createCart = (username, idProduct, quantity, total) => {
   fetch('/api/cart/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: username, idProduct: idProduct, quantity: quantity }),
+    body: JSON.stringify({ username: username, idProduct: idProduct, quantity: quantity, total: total }),
   }).then(() => {
     console.log('new Cart added');
   });
 };
-const updateQuantityByUsernameAndIdProduct = (username, idProduct, quantity) => {
+const updateQuantityByUsernameAndIdProduct = (username, idProduct, quantity, total) => {
   fetch('/api/cart/update_by_username_and_id_product', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: username, idProduct: idProduct, quantity: quantity }),
+    body: JSON.stringify({ username: username, idProduct: idProduct, quantity: quantity, total: total }),
   }).then(() => {
     console.log('New Cart updated');
   });
@@ -138,4 +145,4 @@ const deleteCartItemByUsernameAndIdProduct = (username, idProduct) => {
 
 export { getAllAccount, getAccountByUsername, createAccount, updateAccountByUsername, deleteAccountByUsername };
 export { getAllCategoryUser, getCategoryUserByUsername, createCategoryUserItem, deleteCategoryUserByUsername, deleteCategoryUserItemByUsernameAndCuName };
-export { getAllCart, getCartByUsername, createCart, updateQuantityByUsernameAndIdProduct, deleteCartByUsername, deleteCartItemByUsernameAndIdProduct };
+export { getTotalOnCart, getAllCart, getCartByUsername, createCart, updateQuantityByUsernameAndIdProduct, deleteCartByUsername, deleteCartItemByUsernameAndIdProduct };

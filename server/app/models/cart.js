@@ -71,7 +71,7 @@ exports.createProductToCart = (ac, result) => {
       result(null);
     } else {
       if (cart.length > 0) {
-        db.query('UPDATE cart SET quantity=? where username = ? AND idProduct=?', [ac.quantity, ac.username, ac.idProduct], (errUpdate, cartUpdate) => {
+        db.query('UPDATE cart SET quantity=?, total=? where username = ? AND idProduct=?', [ac.quantity, ac.total, ac.username, ac.idProduct], (errUpdate, cartUpdate) => {
           if (errUpdate) console.log('errUpdate: ' + errUpdate);
           else {
             result(cartUpdate);
@@ -79,7 +79,7 @@ exports.createProductToCart = (ac, result) => {
           }
         });
       } else {
-        db.query(`INSERT INTO cart (username, idProduct,quantity) VALUES (?,?,?)`, [ac.username, ac.idProduct, ac.quantity], (errInsert, cartInsert) => {
+        db.query(`INSERT INTO cart (username, idProduct,quantity,total) VALUES (?,?,?,?)`, [ac.username, ac.idProduct, ac.quantity, ac.total], (errInsert, cartInsert) => {
           if (errInsert) console.log('errInsert: ' + errInsert);
           else {
             result(cartInsert);
@@ -92,10 +92,20 @@ exports.createProductToCart = (ac, result) => {
 };
 
 exports.updateQuantityByUsernameAndIdProduct = (ac, result) => {
-  db.query('UPDATE cart SET quantity=? where username = ? AND idProduct=?', [ac.quantity, ac.username, ac.idProduct], (err, cart) => {
+  db.query('UPDATE cart SET quantity=?, total=? where username = ? AND idProduct=?', [ac.quantity, ac.total, ac.username, ac.idProduct], (err, cart) => {
     if (err) console.log('err: ' + err);
     else {
       result(cart);
+      return;
+    }
+  });
+};
+
+exports.getTotal = (username, result) => {
+  db.query('SELECT SUM(total) as total from sportnow.cart where username = ?', [username], (err, total) => {
+    if (err) console.log('err: ' + err);
+    else {
+      result(total);
       return;
     }
   });

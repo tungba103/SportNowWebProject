@@ -37,15 +37,15 @@ function HomePage(props) {
       <div id="ct-image" className="">
         <div className="h-56 xl:h-96">
           <Carousel slideInterval={1000}>
-            <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
-            <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
-            <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
-            <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
-            <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+            <img src={require('../../assets/web_image/background5.webp')} alt="..." />
+            <img src={require('../../assets/web_image/background2.webp')} alt="..." />
+            <img src={require('../../assets/web_image/background3.jpg')} alt="..." />
+            <img src={require('../../assets/web_image/background4.jpg')} alt="..." />
+            <img src={require('../../assets/web_image/background1.jpg')} alt="..." />
           </Carousel>
         </div>
         <Card className="mt-4" href="#">
-          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Yours, but better.</h5>
+          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Yours way, but better.</h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">Choose on your way with appropriate prices.</p>
         </Card>
       </div>

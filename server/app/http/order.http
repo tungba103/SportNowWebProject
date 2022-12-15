@@ -21,7 +21,7 @@ POST {{baseUrl}}/order/create
 Content-Type: application/json 
 
 {
-    "username":"tungba1",
+    "username":"tungba4",
     "orderDate":"16-12-2022",
     "address":"Shipped",
     "total": "33"

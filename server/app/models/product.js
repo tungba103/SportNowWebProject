@@ -93,7 +93,7 @@ exports.getProductSortedByTypeAndPriceRange = (type, priceFrom, priceTo, value, 
 
 // Search
 exports.getProductSearch = (search, result) => {
-  db.query(`SELECT * from product where title LIKE '${search}%'`, (err, product) => {
+  db.query(`SELECT * from product where title LIKE '%${search}%'`, (err, product) => {
     if (err) {
       console.log('err: ' + err);
       result(null);
@@ -104,7 +104,7 @@ exports.getProductSearch = (search, result) => {
   });
 };
 exports.getProductSearchByType = (search, type, result) => {
-  db.query(`SELECT * from product WHERE title LIKE '${search}%' AND type='${type}'`, (err, product) => {
+  db.query(`SELECT * from product WHERE title LIKE '%${search}%' AND type='${type}'`, (err, product) => {
     if (err) {
       console.log('err: ' + err);
       result(null);
@@ -115,7 +115,7 @@ exports.getProductSearchByType = (search, type, result) => {
   });
 };
 exports.getProductSearchByPriceRange = (search, priceFrom, priceTo, result) => {
-  db.query(`SELECT * from product WHERE title LIKE '${search}%' AND price BETWEEN '${priceFrom}' AND '${priceTo}'`, (err, product) => {
+  db.query(`SELECT * from product WHERE title LIKE '%${search}%' AND price BETWEEN '${priceFrom}' AND '${priceTo}'`, (err, product) => {
     if (err) {
       console.log('err: ' + err);
       result(null);
@@ -126,7 +126,7 @@ exports.getProductSearchByPriceRange = (search, priceFrom, priceTo, result) => {
   });
 };
 exports.getProductSearchByTypeAndPriceRange = (search, type, priceFrom, priceTo, result) => {
-  db.query(`SELECT * from product where title LIKE '${search}%' AND type='${type}' AND price BETWEEN '${priceFrom}' AND '${priceTo}'`, (err, product) => {
+  db.query(`SELECT * from product where title LIKE '%${search}%' AND type='${type}' AND price BETWEEN '${priceFrom}' AND '${priceTo}'`, (err, product) => {
     if (err) {
       console.log('err: ' + err);
       result(null);
@@ -137,7 +137,7 @@ exports.getProductSearchByTypeAndPriceRange = (search, type, priceFrom, priceTo,
   });
 };
 exports.getProductSearchSorted = (search, value, orderType, result) => {
-  db.query(`SELECT * from product where title LIKE '${search}%' order by ${value} ${orderType}`, (err, product) => {
+  db.query(`SELECT * from product where title LIKE '%${search}%' order by ${value} ${orderType}`, (err, product) => {
     if (err) {
       console.log('err: ' + err);
       result(null);
@@ -148,7 +148,7 @@ exports.getProductSearchSorted = (search, value, orderType, result) => {
   });
 };
 exports.getProductSearchSortedByType = (search, type, value, orderType, result) => {
-  db.query(`SELECT * from product where title LIKE '${search}%' AND type='${type}' order by ${value} ${orderType}`, (err, product) => {
+  db.query(`SELECT * from product where title LIKE '%${search}%' AND type='${type}' order by ${value} ${orderType}`, (err, product) => {
     if (err) {
       console.log('err: ' + err);
       result(null);
@@ -159,7 +159,7 @@ exports.getProductSearchSortedByType = (search, type, value, orderType, result) 
   });
 };
 exports.getProductSearchSortedByPriceRange = (search, priceFrom, priceTo, value, orderType, result) => {
-  db.query(`SELECT * from product where title LIKE '${search}%' AND price BETWEEN '${priceFrom}' AND '${priceTo}' order by ${value} ${orderType}`, (err, product) => {
+  db.query(`SELECT * from product where title LIKE '%${search}%' AND price BETWEEN '${priceFrom}' AND '${priceTo}' order by ${value} ${orderType}`, (err, product) => {
     if (err) {
       console.log('err: ' + err);
       result(null);
@@ -170,7 +170,7 @@ exports.getProductSearchSortedByPriceRange = (search, priceFrom, priceTo, value,
   });
 };
 exports.getProductSearchSortedByTypeAndPriceRange = (search, type, priceFrom, priceTo, value, orderType, result) => {
-  db.query(`SELECT * from product where title LIKE '${search}%' AND type='${type}' AND price BETWEEN '${priceFrom}' AND '${priceTo}' order by ${value} ${orderType}`, (err, product) => {
+  db.query(`SELECT * from product where title LIKE '%${search}%' AND type='${type}' AND price BETWEEN '${priceFrom}' AND '${priceTo}' order by ${value} ${orderType}`, (err, product) => {
     if (err) {
       console.log('err: ' + err);
       result(null);

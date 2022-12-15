@@ -15,6 +15,7 @@ module.exports = (router) => {
   router.get('/api/cart', AccountController.getAllCart);
   router.get('/api/cart/:username', AccountController.getCartByUsername);
   router.get('/api/cart/:id_cart', AccountController.getCartByIdCart);
+  router.get('/api/cart/total/:username', AccountController.getTotalOnCart);
   router.delete('/api/cart/delete_by_username', AccountController.deleteCartByUsername);
   router.delete('/api/cart/delete_by_id_cart', AccountController.deleteCartByIdCart);
   router.delete('/api/cart/delete_by_username_and_id_product', AccountController.deleteCartItemByUsernameAndIdProduct);

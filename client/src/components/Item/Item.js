@@ -20,7 +20,7 @@ function Item({ idProduct, title, price, image }) {
           {sessionStorage.getItem('username') != null && (
             <button
               onClick={() => {
-                createCart(sessionStorage.getItem('username'), idProduct, 1);
+                createCart(sessionStorage.getItem('username'), idProduct, 1, price * 1);
                 sessionStorage.setItem('cart', Math.random());
               }}
               className="mt-2 rounded-3xl border border-sky-800 py-2 px-4 w-36 sm:py-3 bg-orange-100 hover:bg-orange-400"

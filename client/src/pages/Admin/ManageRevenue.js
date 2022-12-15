@@ -38,13 +38,13 @@ function ManageRevenue() {
             </Table.Row>
           ) : (
             orders.map((order, i) => {
-              cost += 1000;
+              cost += order.total;
               return (
                 <Table.Row key={i} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                   <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{order.idOrder}</Table.Cell>
                   <Table.Cell>{order.username}</Table.Cell>
                   <Table.Cell>{order.orderDate}</Table.Cell>
-                  <Table.Cell>$1000</Table.Cell>
+                  <Table.Cell>${order.total}</Table.Cell>
                 </Table.Row>
               );
             })

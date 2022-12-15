@@ -19,9 +19,7 @@ function Order({ idOrder, orderDate, status, total }) {
           return <OrderItem key={i} idProduct={orderItem.idProduct} quantity={orderItem.quantity} addToTotal={(value) => (total = total + value)} />;
         })
       )}
-      <div>
-        <p className="flex justify-end font-bold mr-10  mt-4">Total: ${total}</p>
-      </div>
+      <div>{/* <p className="flex justify-end font-bold mr-10  mt-4">Total: ${total}</p> */}</div>
     </div>
   );
 }

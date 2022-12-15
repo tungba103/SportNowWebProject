@@ -35,7 +35,9 @@ function ItemDetailPage(props) {
   useEffect(() => {
     getProductByIdProduct((data) => setProducts(data), id.id);
   }, [id.id]);
-  if (typeof products !== 'undefined') getProductSearch((data) => setRelativeProducts(data), products[0].image.slice(0, 6));
+  if (typeof products !== 'undefined') {
+    getProductSearch((data) => setRelativeProducts(data), products[0].image.slice(0, 6));
+  }
   return (
     <div className="bg-orange-50 mt-32">
       <div id="item" className="p-4 sm:p-10">
@@ -75,16 +77,18 @@ function ItemDetailPage(props) {
             <div id="item-info" className="sm:ml-10">
               <p className="font-bold text-3xl my-2 sm:my-4 sm:text-4xl">{products[0].title}</p>
               <p className="my-2 sm:my-4 sm:text-xl">${products[0].price}</p>
-              <p className="my-1 sm:my-2 text-sm text-gray-700">Quantity</p>
-              <div className="mr-4 w-fit rounded-3xl border border-sky-800 px-4 py-2 bg-white">
-                <FontAwesomeIcon icon={faMinus} className="cursor-pointer" onClick={() => setQuantity(quantity - 1)} />
-                <span className="mx-8">{quantity}</span>
-                <FontAwesomeIcon icon={faPlus} className="cursor-pointer" onClick={() => setQuantity(quantity + 1)} />
-              </div>
+              {sessionStorage.getItem('username') != null && <p className="my-1 sm:my-2 text-sm text-gray-700">Quantity</p>}
+              {sessionStorage.getItem('username') != null && (
+                <div className="mr-4 w-fit rounded-3xl border border-sky-800 px-4 py-2 bg-white">
+                  <FontAwesomeIcon icon={faMinus} className="cursor-pointer" onClick={() => setQuantity(quantity - 1)} />
+                  <span className="mx-8">{quantity}</span>
+                  <FontAwesomeIcon icon={faPlus} className="cursor-pointer" onClick={() => setQuantity(quantity + 1)} />
+                </div>
+              )}
               {sessionStorage.getItem('username') != null && (
                 <button
                   onClick={() => {
-                    createCart(sessionStorage.getItem('username'), id.id, quantity);
+                    createCart(sessionStorage.getItem('username'), id.id, quantity, quantity * products[0].price);
                   }}
                   className="mt-6 mb-2 w-full sm:w-96 sm:text-lg rounded-3xl border border-sky-800  px-4  sm:py-3 bg-orange-100 hover:bg-orange-400 py-2"
                 >
@@ -102,7 +106,7 @@ function ItemDetailPage(props) {
               <h1>Loading...</h1>
             ) : (
               relativeProducts.map((item, index) => {
-                return <Item key={index} image={`${item.image}`} title={`${item.title}`} price={`${item.price}`} />;
+                return <Item key={index} idProduct={item.idProduct} image={item.image} title={item.title} price={item.price} />;
               })
             )}
           </div>

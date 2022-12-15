@@ -1,5 +1,5 @@
 var Account = require('../models/account');
-var CategoryUser = require('../models/categoryUser');
+// var CategoryUser = require('../models/categoryUser');
 var Cart = require('../models/cart');
 
 // Account
@@ -111,6 +111,11 @@ exports.createCart = (req, res) => {
 exports.updateQuantityByUsernameAndIdProduct = (req, res) => {
   var ac = req.body;
   Cart.updateQuantityByUsernameAndIdProduct(ac, (data) => {
+    res.send(data);
+  });
+};
+exports.getTotalOnCart = (req, res) => {
+  Cart.getTotal(req.params.username, (data) => {
     res.send(data);
   });
 };
