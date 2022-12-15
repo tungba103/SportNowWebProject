@@ -66,7 +66,7 @@ exports.deleteOrderByIdOrder = (ac, result) => {
 // };
 
 exports.createOrder = (ac, result) => {
-  db.query(`INSERT INTO orderr (username, orderDate,address) VALUES (?,?,?)`, [ac.username, ac.orderDate, ac.address], (err, order) => {
+  db.query(`INSERT INTO orderr (username, orderDate,address,total) VALUES (?,?,?,?)`, [ac.username, ac.orderDate, ac.address, ac.total], (err, order) => {
     if (err) console.log('err: ' + err);
     else {
       result(order);
@@ -76,7 +76,7 @@ exports.createOrder = (ac, result) => {
 };
 
 exports.updateOrderByUsername = (ac, result) => {
-  db.query('UPDATE orderr SET orderDate=?, address=? where username = ?', [ac.orderDate, ac.address, ac.username], (err, order) => {
+  db.query('UPDATE orderr SET orderDate=?, address=? total=? where username = ?', [ac.orderDate, ac.address, ac.username, ac.total], (err, order) => {
     if (err) console.log('err: ' + err);
     else {
       result(order);

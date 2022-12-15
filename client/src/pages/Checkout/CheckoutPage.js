@@ -5,13 +5,14 @@ import { CartItem } from '../../components';
 import { deleteCartItemByUsernameAndIdProduct, getCartByUsername, updateQuantityByUsernameAndIdProduct } from '../../components/API/Account';
 import { getAddressByUsername } from '../../components/API/Address';
 import { createOrder, createOrderItem, getOrderByUsername } from '../../components/API/Order';
-import { updateProductStorageByIdProduct } from '../../components/API/Product';
+import { getProductByIdProduct, updateProductStorageByIdProduct } from '../../components/API/Product';
 function CheckoutPage() {
   const navigate = useNavigate();
   const [addresses, setAddresses] = useState();
   const [carts, setCarts] = useState();
   const [cartHandle, setCartHandle] = useState();
 
+  const [product, setProduct] = useState();
   const [order, setOrder] = useState();
   const [address, setAddress] = useState('');
   useEffect(() => {
@@ -21,16 +22,15 @@ function CheckoutPage() {
     getAddressByUsername((data) => setAddresses(data), sessionStorage.getItem('username'));
   }, []);
   const submitOrder = () => {
-    createOrder(sessionStorage.getItem('username'), '15-12-2022', address);
+    createOrder(sessionStorage.getItem('username'), '15-12-2022', 'TungBa - Son La', 33);
     getOrderByUsername((data) => setOrder(data), sessionStorage.getItem('username'));
-    setTimeout(() => {
-      for (let i = 0; i < carts.length; i++) {
-        createOrderItem(order[0].idOrder, carts[i].idProduct, carts[i].quantity);
-        // updateProductStorageByIdProduct(carts[i].idProduct,10,carts[i].quantity);
-      }
-      alert('Order successfully!');
-      navigate('/order_con');
-    }, 1000);
+    for (let i = 0; i < carts.length; i++) {
+      createOrderItem(order[0].idOrder, carts[i].idProduct, carts[i].quantity);
+      getProductByIdProduct((data) => setProduct(data), carts[i].idProduct);
+      updateProductStorageByIdProduct(carts[i].idProduct, product[0].storage - carts[i].quantity, product[0].sold + carts[i].quantity);
+    }
+    alert('Order successfully!');
+    navigate('/order_con');
   };
   return (
     <div className="pt-24 sm:pt-40 border flex-col justify-center items-center px-4 sm:px-96 bg-gray-50">

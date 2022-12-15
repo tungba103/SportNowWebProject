@@ -22,8 +22,9 @@ Content-Type: application/json
 
 {
     "username":"tungba1",
-    "orderDate":"2022-12-04",
-    "status":"Shipped"
+    "orderDate":"16-12-2022",
+    "address":"Shipped",
+    "total": "33"
 } 
 ###
 # @name updateOrderByUsername

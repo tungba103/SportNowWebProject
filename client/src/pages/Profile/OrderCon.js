@@ -12,7 +12,7 @@ function OrderCon() {
         <h1>Loading...</h1>
       ) : (
         orders.map((order, i) => {
-          return <Order key={i} idOrder={order.idOrder} orderDate={order.orderDate} status={order.address} />;
+          return <Order key={i} idOrder={order.idOrder} orderDate={order.orderDate} status={order.address} total={order.total} />;
         })
       )}
     </div>

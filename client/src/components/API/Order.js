@@ -26,20 +26,20 @@ const getOrderByUsername = (result, username) => {
 //       result(data);
 //     });
 // };
-const createOrder = (username, orderDate, address) => {
+const createOrder = (username, orderDate, address, total) => {
   fetch('/api/order/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: username, orderDate: orderDate, address: address }),
+    body: JSON.stringify({ username: username, orderDate: orderDate, address: address, total: total }),
   }).then(() => {
     console.log('new Order added');
   });
 };
-const updateOrderByUsername = (idOrder, username, orderDate, address) => {
+const updateOrderByUsername = (idOrder, username, orderDate, address, total) => {
   fetch('/api/order/update_by_username', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: username, idOrder: idOrder, orderDate: orderDate, address: address }),
+    body: JSON.stringify({ username: username, idOrder: idOrder, orderDate: orderDate, address: address, total: total }),
   }).then(() => {
     console.log('New Order updated');
   });

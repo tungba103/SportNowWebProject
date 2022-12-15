@@ -1,9 +1,8 @@
 import OrderItem from './OrderItem';
 import { getOrderItemByIdOrder } from '../API/Order';
 import { useEffect, useState } from 'react';
-function Order({ idOrder, orderDate, status }) {
+function Order({ idOrder, orderDate, status, total }) {
   const [orderItems, setOrderItems] = useState();
-  var total = 0;
   useEffect(() => {
     getOrderItemByIdOrder((data) => setOrderItems(data), idOrder);
   }, []);
