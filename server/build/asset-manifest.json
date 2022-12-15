@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bc167a26.css",
-    "main.js": "/static/js/main.ac7515fc.js",
+    "main.js": "/static/js/main.d2f92167.js",
     "static/media/bournemouth_shirt.png": "/static/media/bournemouth_shirt.cdb3c86b12afa399ca06.png",
     "static/media/background.jpg": "/static/media/background.f68d6728225eb9d1daba.jpg",
     "static/media/arsenal_ball.png": "/static/media/arsenal_ball.5b07ba398e14e9e348f3.png",
@@ -11,6 +11,7 @@
     "static/media/tottenham_short.png": "/static/media/tottenham_short.f7f624b8980905af90b9.png",
     "static/media/MC_short.png": "/static/media/MC_short.88892baa6709a3512d88.png",
     "static/media/arsenal_socks.png": "/static/media/arsenal_socks.88fcb02962b7792514c3.png",
+    "static/media/background4.jpg": "/static/media/background4.a1c0e1c17f1718d77629.jpg",
     "static/media/liverpool_shirt.png": "/static/media/liverpool_shirt.30f3eaaa5c9d6d46e8e9.png",
     "static/media/liverpool_short.png": "/static/media/liverpool_short.2b9263ea437f0db4350d.png",
     "static/media/chelsea_shirt.png": "/static/media/chelsea_shirt.c543baec2c382193786e.png",
@@ -24,6 +25,7 @@
     "static/media/MU_socks.png": "/static/media/MU_socks.8248a41e637add00baf8.png",
     "static/media/fulham_socks.png": "/static/media/fulham_socks.6d045fa34cef7f22d09c.png",
     "static/media/bournemouth_socks.png": "/static/media/bournemouth_socks.94fd22ba62a0dc35cf6d.png",
+    "static/media/background1.jpg": "/static/media/background1.30a6209d374691507697.jpg",
     "static/media/bournemouth_short.png": "/static/media/bournemouth_short.7eaf8c4e21fe5fe2a55f.png",
     "static/media/brighton_socks.png": "/static/media/brighton_socks.4ecb789e2afdcb57ba86.png",
     "static/media/newcastle_shirt.png": "/static/media/newcastle_shirt.7f4df55e8cf838ad8e72.png",
@@ -34,13 +36,16 @@
     "static/media/tottenham_socks.png": "/static/media/tottenham_socks.f26f26dcadcd37c95050.png",
     "static/media/crystalpalace_ball.jpg": "/static/media/crystalpalace_ball.f6106738b7a736a21ec7.jpg",
     "static/media/tottenham_shirt.png": "/static/media/tottenham_shirt.8f8fc58a59e30b306573.png",
+    "static/media/background3.jpg": "/static/media/background3.99d237682a48dd01b18e.jpg",
     "static/media/westham_short.jpg": "/static/media/westham_short.95cdfff377055b9ac0c4.jpg",
     "static/media/westham_socks.jpg": "/static/media/westham_socks.ab46f1f66428a9746aa1.jpg",
     "static/media/crystalpalace_shirt.jpg": "/static/media/crystalpalace_shirt.ea9c62ca7c8e8bbb447f.jpg",
     "static/media/chelsea_socks.png": "/static/media/chelsea_socks.4834e75da68ea0217d13.png",
+    "static/media/background5.webp": "/static/media/background5.f3bb0f4e2d170ade90a0.webp",
     "static/media/westham_shirt.jpg": "/static/media/westham_shirt.98b82449a840450c2ea1.jpg",
     "static/media/shirt.png": "/static/media/shirt.57b79daadbf47440aa08.png",
     "static/media/newcastle_socks.png": "/static/media/newcastle_socks.2b339841309db00e33bd.png",
+    "static/media/background2.webp": "/static/media/background2.26a9ea52ca4b9deef606.webp",
     "static/media/NF_ball.jpg": "/static/media/NF_ball.4642100a93d824e9459f.jpg",
     "static/media/astonvilla_ball.jpg": "/static/media/astonvilla_ball.825abd03476563ddebb5.jpg",
     "static/media/LC_short.jpg": "/static/media/LC_short.d91b8bc13c9afcd2ee85.jpg",
@@ -74,10 +79,10 @@
     "static/media/leeds_short.jpg": "/static/media/leeds_short.8590b2baac8a6c724e51.jpg",
     "index.html": "/index.html",
     "main.bc167a26.css.map": "/static/css/main.bc167a26.css.map",
-    "main.ac7515fc.js.map": "/static/js/main.ac7515fc.js.map"
+    "main.d2f92167.js.map": "/static/js/main.d2f92167.js.map"
   },
   "entrypoints": [
     "static/css/main.bc167a26.css",
-    "static/js/main.ac7515fc.js"
+    "static/js/main.d2f92167.js"
   ]
 }
