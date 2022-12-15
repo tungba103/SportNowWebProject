@@ -2,9 +2,10 @@ module.exports = (router) => {
   var OrderController = require('../controllers/orderController');
   router.get('/api/order', OrderController.getAllOrder);
   router.get('/api/order/username/:username', OrderController.getOrderByUsername);
-  router.get('/api/order/status/:status', OrderController.getOrderByStatus);
+  // router.get('/api/order/status/:status', OrderController.getOrderByStatus);
+  // router.get('/api/order/username/status/:username/:status', OrderController.getOrderByUsernameAndStatus);
   router.delete('/api/order/delete_by_id_order', OrderController.deleteOrderByIdOrder);
-  router.post('/api/order/create', OrderController.createOrderItem);
+  router.post('/api/order/create', OrderController.createOrder);
   router.put('/api/order/update_by_username', OrderController.updateOrderByUsername);
 
   router.get('/api/order_item', OrderController.getAllOrderItem);

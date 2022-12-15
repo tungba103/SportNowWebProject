@@ -46,9 +46,8 @@ function ManageStorage() {
           <Table.HeadCell className="w-20 sm:w-96">Description</Table.HeadCell>
           <Table.HeadCell className="w-20 sm:w-96">Storage</Table.HeadCell>
           <Table.HeadCell className="w-20 sm:w-96">Sold</Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Edit</span>
-          </Table.HeadCell>
+          <Table.HeadCell></Table.HeadCell>
+          <Table.HeadCell></Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
           {typeof products === 'undefined' ? (
@@ -65,6 +64,12 @@ function ManageStorage() {
                   Edit
                 </a>
               </Table.Cell>
+              <Table.Cell>
+                <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+                  Edit
+                </a>
+              </Table.Cell>
+              <Table.Cell></Table.Cell>
             </Table.Row>
           ) : (
             products.map((product, i) => {
@@ -77,6 +82,7 @@ function ManageStorage() {
                   <Table.Cell>{product.description.slice(0, 54)}...</Table.Cell>
                   <Table.Cell>{product.storage}</Table.Cell>
                   <Table.Cell>{product.sold}</Table.Cell>
+
                   <Table.Cell>
                     <p
                       onClick={() => {
@@ -87,6 +93,9 @@ function ManageStorage() {
                     >
                       Edit Product
                     </p>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Button color={'failure'}>Delete</Button>
                   </Table.Cell>
                 </Table.Row>
               );

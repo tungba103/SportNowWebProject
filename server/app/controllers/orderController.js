@@ -11,11 +11,16 @@ exports.getOrderByUsername = (req, res) => {
     res.send(data);
   });
 };
-exports.getOrderByStatus = (req, res) => {
-  Order.getOrderByStatus(req.params.status, (data) => {
-    res.send(data);
-  });
-};
+// exports.getOrderByStatus = (req, res) => {
+//   Order.getOrderByStatus(req.params.status, (data) => {
+//     res.send(data);
+//   });
+// };
+// exports.getOrderByUsernameAndStatus = (req, res) => {
+//   Order.getOrderByUsernameAndStatus(req.params.username, req.params.status, (data) => {
+//     res.send(data);
+//   });
+// };
 exports.deleteOrderByIdOrder = (req, res) => {
   Order.deleteOrderByIdOrder(req.body, (data) => {
     res.send(data);

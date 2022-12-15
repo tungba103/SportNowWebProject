@@ -68,7 +68,7 @@ function Cart(props) {
                 <button
                   className="px-6 py-2 rounded-3xl bg-orange-500 font-bold text-xl text-white opacity-90 hover:opacity-100 mt-10"
                   onClick={() => {
-                    props.onHide();
+                    props.setDisplayCart('hidden');
                   }}
                 >
                   <Link to="/checkout">Check out</Link>

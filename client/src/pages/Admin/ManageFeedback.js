@@ -20,9 +20,6 @@ function ManageFeedback() {
           <Table.HeadCell className="w-20 sm:w-96">ID Feedback</Table.HeadCell>
           <Table.HeadCell className="w-20 sm:w-96">Username</Table.HeadCell>
           <Table.HeadCell className="w-20 sm:w-96">Content</Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Edit</span>
-          </Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
           {typeof feedbacks === 'undefined' ? (
@@ -30,11 +27,6 @@ function ManageFeedback() {
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white ">0</Table.Cell>
               <Table.Cell>username</Table.Cell>
               <Table.Cell>content</Table.Cell>
-              <Table.Cell>
-                <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
-                  Edit
-                </a>
-              </Table.Cell>
             </Table.Row>
           ) : (
             feedbacks.map((feedback, i) => {
@@ -43,11 +35,6 @@ function ManageFeedback() {
                   <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white ">{feedback.idFeedback}</Table.Cell>
                   <Table.Cell>{feedback.username}</Table.Cell>
                   <Table.Cell>{feedback.content}</Table.Cell>
-                  <Table.Cell>
-                    <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
-                      Edit
-                    </a>
-                  </Table.Cell>
                 </Table.Row>
               );
             })

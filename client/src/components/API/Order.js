@@ -12,27 +12,34 @@ const getOrderByUsername = (result, username) => {
       result(data);
     });
 };
-const getOrderByStatus = (result, status) => {
-  fetch(`/api/order/status/${status}`)
-    .then((response) => response.json())
-    .then((data) => {
-      result(data);
-    });
-};
-const createOrder = (username, orderDate, status) => {
+// const getOrderByStatus = (result, status) => {
+//   fetch(`/api/order/status/${status}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       result(data);
+//     });
+// };
+// const getOrderByUsernameAndStatus = (result, username, status) => {
+//   fetch(`/api/order/username/status/${username}/${status}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       result(data);
+//     });
+// };
+const createOrder = (username, orderDate, address) => {
   fetch('/api/order/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: username, orderDate: orderDate, status: status }),
+    body: JSON.stringify({ username: username, orderDate: orderDate, address: address }),
   }).then(() => {
     console.log('new Order added');
   });
 };
-const updateOrderByUsername = (idOrder, username, orderDate, status) => {
+const updateOrderByUsername = (idOrder, username, orderDate, address) => {
   fetch('/api/order/update_by_username', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: username, idOrder: idOrder, orderDate: orderDate, status: status }),
+    body: JSON.stringify({ username: username, idOrder: idOrder, orderDate: orderDate, address: address }),
   }).then(() => {
     console.log('New Order updated');
   });
@@ -90,5 +97,5 @@ const deleteOrderItemByIdOrderAndIdProduct = (idOrder, idProduct) => {
   });
 };
 
-export { getAllOrder, getOrderByUsername, getOrderByStatus, createOrder, updateOrderByUsername, deleteOrderByIdOrder };
+export { getAllOrder, getOrderByUsername, createOrder, updateOrderByUsername, deleteOrderByIdOrder };
 export { getAllOrderItem, getOrderItemByIdOrder, createOrderItem, updateOrderItemQuantityByIdOrderAndIdProduct, deleteOrderItemByIdOrderAndIdProduct };

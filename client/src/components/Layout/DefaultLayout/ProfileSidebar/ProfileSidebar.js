@@ -39,9 +39,9 @@ function ProfileSidebar() {
             <p className="my-2 hover:text-orange-600 cursor-pointer">
               <Link to={'/address_con'}>Address</Link>
             </p>
-            <p className="my-2 hover:text-orange-600 cursor-pointer">
+            {/* <p className="my-2 hover:text-orange-600 cursor-pointer">
               <Link to={'/category_con'}>Category</Link>
-            </p>
+            </p> */}
             <p className="my-2 hover:text-orange-600 cursor-pointer">
               <Link to={'/change_password_con'}>Change password</Link>
             </p>
@@ -56,9 +56,6 @@ function ProfileSidebar() {
             <p className="my-2 hover:text-orange-600 cursor-pointer">
               <Link to={'/order_con'}>All</Link>
             </p>
-            <p className="my-2 hover:text-orange-600 cursor-pointer">Shipping</p>
-            <p className="my-2 hover:text-orange-600 cursor-pointer">Shipped</p>
-            <p className="my-2 hover:text-orange-600 cursor-pointer">Canceled</p>
           </div>
         </div>
       </div>

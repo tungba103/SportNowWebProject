@@ -6,7 +6,7 @@ GET {{baseUrl}}/order
 GET {{baseUrl}}/order/username/tungba1
 ###
 # @name getOrderByStatus
-GET {{baseUrl}}/order/status/Shipped
+DELETE {{baseUrl}}/order/status/Shipped
 ###
 # @name deleteOrderByIdOrder
 DELETE {{baseUrl}}/order/delete_by_id_order
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 ###
 # @name createOrder
-GET {{baseUrl}}/order/create
+POST {{baseUrl}}/order/create
 Content-Type: application/json 
 
 {
@@ -27,7 +27,7 @@ Content-Type: application/json
 } 
 ###
 # @name updateOrderByUsername
-GET {{baseUrl}}/order/update_by_username
+PUT {{baseUrl}}/order/update_by_username
 Content-Type: application/json 
 
 {
