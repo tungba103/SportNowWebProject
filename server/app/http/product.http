@@ -83,8 +83,9 @@ PUT {{baseUrl}}/product/update_info_by_id_product
 Content-Type: application/json
 
 {
-    "idProduct":92,
+    "idProduct":98,
     "title": "Demo Product",
+    "type": "shirt",
     "price": 10,
     "image": "NF_ball.jpg",
     "description": "Nottingham Forest Football Club is an association football club based in West Bridgford, Nottinghamshire, England. The football club was founded in 1865 and have played their home games at the City Ground, on the banks of the River Trent, since 1898. Forest are one of four English clubs to have won the European Cup/UEFA Champions League more than once and are one of two English clubs to have won the competition back-to-back. Forest have two stars above their club crest to commemorate their two European Cup victories. The club competes in the Premier League, the top division of the English football league system."

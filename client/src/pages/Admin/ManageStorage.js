@@ -2,30 +2,31 @@ import { Button, Table } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { AddProduct, EditProduct } from '../../components';
 
-import { getAllProduct, getProductByIdProduct } from '../../components/API/Product';
+import { deleteProductByIdProduct, getAllProduct, getProductByIdProduct } from '../../components/API/Product';
 function ManageStorage() {
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [showEditProduct, setShowEditProduct] = useState(false);
 
   const [products, setProducts] = useState();
+  const [hook, setHook] = useState(0);
+  // const [productInfo, setProductInfo] = useState({
+  //   idProduct: 0,
+  //   title: 'title',
+  //   price: 0,
+  //   image: 'image.png',
+  //   description: 'description',
+  //   storage: 0,
+  //   sold: 0,
+  // });
 
-  const [productInfo, setProductInfo] = useState({
-    idProduct: 0,
-    title: 'title',
-    price: 0,
-    image: 'image.png',
-    description: 'description',
-    storage: 0,
-    sold: 0,
-  });
-
-  const fetchProductInfo = (idProduct) => {
-    getProductByIdProduct((data) => setProductInfo(data));
-  };
+  // const fetchProductInfo = (idProduct) => {
+  //   getProductByIdProduct((data) => setProductInfo(data));
+  // };
+  const [idProduct, setIdProduct] = useState(1);
 
   useEffect(() => {
     getAllProduct((data) => setProducts(data));
-  }, []);
+  }, [hook]);
 
   return (
     <div className="flex flex-col items-center mt-4">
@@ -34,8 +35,8 @@ function ManageStorage() {
         <Button size={'sm'} className="ml-96" onClick={() => setShowAddProduct(true)}>
           Add new product
         </Button>
-        <AddProduct show={showAddProduct} onClose={() => setShowAddProduct(false)} />
-        <EditProduct product={productInfo} show={showEditProduct} onClose={() => setShowEditProduct(false)} />
+        <AddProduct hook={() => setHook(Math.random())} show={showAddProduct} onClose={() => setShowAddProduct(false)} />
+        <EditProduct idProduct={idProduct} hook={() => setHook(Math.random())} show={showEditProduct} onClose={() => setShowEditProduct(false)} />
       </div>
       <Table className="mt-4">
         <Table.Head>
@@ -87,7 +88,8 @@ function ManageStorage() {
                     <p
                       onClick={() => {
                         setShowEditProduct(true);
-                        setProductInfo(product);
+                        setIdProduct(product.idProduct);
+                        // setProductInfo(product);
                       }}
                       className="font-medium text-blue-600 hover:underline dark:text-blue-500 cursor-pointer"
                     >
@@ -95,7 +97,15 @@ function ManageStorage() {
                     </p>
                   </Table.Cell>
                   <Table.Cell>
-                    <Button color={'failure'}>Delete</Button>
+                    <Button
+                      onClick={() => {
+                        deleteProductByIdProduct(product.idProduct);
+                        setHook(Math.random());
+                      }}
+                      color={'failure'}
+                    >
+                      Delete
+                    </Button>
                   </Table.Cell>
                 </Table.Row>
               );

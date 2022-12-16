@@ -131,13 +131,13 @@ const createProduct = (title, type, price, image, description, storage, sold) =>
     console.log('new Product added');
   });
 };
-const updateProductInfoByIdProduct = (idProduct, title, price, image, description) => {
+const updateProductInfoByIdProduct = (idProduct, title, type, price, image, description) => {
   fetch('/api/product/update_info_by_id_product', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ idProduct: idProduct, title: title, price: price, image: image, description: description }),
+    body: JSON.stringify({ idProduct: idProduct, title: title, type: type, price: price, image: image, description: description }),
   }).then(() => {
-    console.log('New Product updated');
+    console.log('New Product Info updated');
   });
 };
 const updateProductStorageByIdProduct = (idProduct, storage, sold) => {
@@ -146,7 +146,7 @@ const updateProductStorageByIdProduct = (idProduct, storage, sold) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ idProduct: idProduct, storage: storage, sold: sold }),
   }).then(() => {
-    console.log('New Product updated');
+    console.log('New Product Storage updated');
   });
 };
 const deleteProductByIdProduct = (idProduct) => {

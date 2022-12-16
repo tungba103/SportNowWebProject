@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bc167a26.css",
-    "main.js": "/static/js/main.d2f92167.js",
+    "main.js": "/static/js/main.6f41f68d.js",
     "static/media/bournemouth_shirt.png": "/static/media/bournemouth_shirt.cdb3c86b12afa399ca06.png",
     "static/media/background.jpg": "/static/media/background.f68d6728225eb9d1daba.jpg",
     "static/media/arsenal_ball.png": "/static/media/arsenal_ball.5b07ba398e14e9e348f3.png",
@@ -50,6 +50,7 @@
     "static/media/astonvilla_ball.jpg": "/static/media/astonvilla_ball.825abd03476563ddebb5.jpg",
     "static/media/LC_short.jpg": "/static/media/LC_short.d91b8bc13c9afcd2ee85.jpg",
     "static/media/LC_socks.jpg": "/static/media/LC_socks.bf89ab4079d3fd8470a6.jpg",
+    "static/media/demo.jpg": "/static/media/demo.e97b108d09623f09621c.jpg",
     "static/media/crystalpalace_short.jpg": "/static/media/crystalpalace_short.ee6b8203439e2e3e8fbd.jpg",
     "static/media/brentford_ball.jpg": "/static/media/brentford_ball.02f0d1934e0ab0780553.jpg",
     "static/media/southamton_shirt.jpg": "/static/media/southamton_shirt.4eef4ec77da7d3966247.jpg",
@@ -79,10 +80,10 @@
     "static/media/leeds_short.jpg": "/static/media/leeds_short.8590b2baac8a6c724e51.jpg",
     "index.html": "/index.html",
     "main.bc167a26.css.map": "/static/css/main.bc167a26.css.map",
-    "main.d2f92167.js.map": "/static/js/main.d2f92167.js.map"
+    "main.6f41f68d.js.map": "/static/js/main.6f41f68d.js.map"
   },
   "entrypoints": [
     "static/css/main.bc167a26.css",
-    "static/js/main.d2f92167.js"
+    "static/js/main.6f41f68d.js"
   ]
 }

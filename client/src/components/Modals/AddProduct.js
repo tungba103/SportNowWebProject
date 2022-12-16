@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form';
 function AddProduct(props) {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    createProduct('Demo', 'demo', 1, 'https://i.pinimg.com/originals/81/df/10/81df1017af6b81e3d733e969e4410152.jpg', 'data.description', 1, 1);
+    createProduct(data.title, data.type, data.price, 'demo.jpg', data.description, data.storage, data.sold);
+    props.hook();
     alert('Add product successfully!');
     props.onClose();
   };
@@ -14,17 +15,17 @@ function AddProduct(props) {
       <Modal.Body>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">Add new product</h3>
-          {/* <div>
-            <div className="block">
-              <Label htmlFor="idProduct" value="ID Product" />
-            </div>
-            <TextInput id="idProduct" {...register('idProduct')} required={true} />
-          </div> */}
           <div>
             <div className="block">
               <Label htmlFor="title" value="Title" />
             </div>
             <TextInput id="title" {...register('title')} required={true} />
+          </div>
+          <div>
+            <div className="block">
+              <Label htmlFor="type" value="Type " />
+            </div>
+            <TextInput id="type" {...register('type')} required={true} />
           </div>
           <div>
             <div className="block">
